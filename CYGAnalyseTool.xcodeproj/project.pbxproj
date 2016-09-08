@@ -1,0 +1,519 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F37EBF5E1D81ACF7001CEED1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F37EBF5D1D81ACF7001CEED1 /* main.m */; };
+		F37EBF611D81ACF7001CEED1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F37EBF601D81ACF7001CEED1 /* AppDelegate.m */; };
+		F37EBF641D81ACF7001CEED1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F37EBF631D81ACF7001CEED1 /* ViewController.m */; };
+		F37EBF671D81ACF7001CEED1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F37EBF651D81ACF7001CEED1 /* Main.storyboard */; };
+		F37EBF691D81ACF7001CEED1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F37EBF681D81ACF7001CEED1 /* Assets.xcassets */; };
+		F37EBF6C1D81ACF7001CEED1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F37EBF6A1D81ACF7001CEED1 /* LaunchScreen.storyboard */; };
+		F37EBF771D81ACF7001CEED1 /* CYGAnalyseToolTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F37EBF761D81ACF7001CEED1 /* CYGAnalyseToolTests.m */; };
+		F37EBF821D81ACF7001CEED1 /* CYGAnalyseToolUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F37EBF811D81ACF7001CEED1 /* CYGAnalyseToolUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F37EBF731D81ACF7001CEED1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F37EBF511D81ACF7001CEED1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F37EBF581D81ACF7001CEED1;
+			remoteInfo = CYGAnalyseTool;
+		};
+		F37EBF7E1D81ACF7001CEED1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F37EBF511D81ACF7001CEED1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F37EBF581D81ACF7001CEED1;
+			remoteInfo = CYGAnalyseTool;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F37EBF591D81ACF7001CEED1 /* CYGAnalyseTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CYGAnalyseTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F37EBF5D1D81ACF7001CEED1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F37EBF5F1D81ACF7001CEED1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		F37EBF601D81ACF7001CEED1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		F37EBF621D81ACF7001CEED1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		F37EBF631D81ACF7001CEED1 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		F37EBF661D81ACF7001CEED1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F37EBF681D81ACF7001CEED1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F37EBF6B1D81ACF7001CEED1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F37EBF6D1D81ACF7001CEED1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F37EBF721D81ACF7001CEED1 /* CYGAnalyseToolTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CYGAnalyseToolTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F37EBF761D81ACF7001CEED1 /* CYGAnalyseToolTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYGAnalyseToolTests.m; sourceTree = "<group>"; };
+		F37EBF781D81ACF7001CEED1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F37EBF7D1D81ACF7001CEED1 /* CYGAnalyseToolUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CYGAnalyseToolUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F37EBF811D81ACF7001CEED1 /* CYGAnalyseToolUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYGAnalyseToolUITests.m; sourceTree = "<group>"; };
+		F37EBF831D81ACF7001CEED1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F37EBF561D81ACF7001CEED1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F37EBF6F1D81ACF7001CEED1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F37EBF7A1D81ACF7001CEED1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F37EBF501D81ACF7001CEED1 = {
+			isa = PBXGroup;
+			children = (
+				F37EBF5B1D81ACF7001CEED1 /* CYGAnalyseTool */,
+				F37EBF751D81ACF7001CEED1 /* CYGAnalyseToolTests */,
+				F37EBF801D81ACF7001CEED1 /* CYGAnalyseToolUITests */,
+				F37EBF5A1D81ACF7001CEED1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F37EBF5A1D81ACF7001CEED1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F37EBF591D81ACF7001CEED1 /* CYGAnalyseTool.app */,
+				F37EBF721D81ACF7001CEED1 /* CYGAnalyseToolTests.xctest */,
+				F37EBF7D1D81ACF7001CEED1 /* CYGAnalyseToolUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F37EBF5B1D81ACF7001CEED1 /* CYGAnalyseTool */ = {
+			isa = PBXGroup;
+			children = (
+				F37EBF5F1D81ACF7001CEED1 /* AppDelegate.h */,
+				F37EBF601D81ACF7001CEED1 /* AppDelegate.m */,
+				F37EBF621D81ACF7001CEED1 /* ViewController.h */,
+				F37EBF631D81ACF7001CEED1 /* ViewController.m */,
+				F37EBF651D81ACF7001CEED1 /* Main.storyboard */,
+				F37EBF681D81ACF7001CEED1 /* Assets.xcassets */,
+				F37EBF6A1D81ACF7001CEED1 /* LaunchScreen.storyboard */,
+				F37EBF6D1D81ACF7001CEED1 /* Info.plist */,
+				F37EBF5C1D81ACF7001CEED1 /* Supporting Files */,
+			);
+			path = CYGAnalyseTool;
+			sourceTree = "<group>";
+		};
+		F37EBF5C1D81ACF7001CEED1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F37EBF5D1D81ACF7001CEED1 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F37EBF751D81ACF7001CEED1 /* CYGAnalyseToolTests */ = {
+			isa = PBXGroup;
+			children = (
+				F37EBF761D81ACF7001CEED1 /* CYGAnalyseToolTests.m */,
+				F37EBF781D81ACF7001CEED1 /* Info.plist */,
+			);
+			path = CYGAnalyseToolTests;
+			sourceTree = "<group>";
+		};
+		F37EBF801D81ACF7001CEED1 /* CYGAnalyseToolUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F37EBF811D81ACF7001CEED1 /* CYGAnalyseToolUITests.m */,
+				F37EBF831D81ACF7001CEED1 /* Info.plist */,
+			);
+			path = CYGAnalyseToolUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F37EBF581D81ACF7001CEED1 /* CYGAnalyseTool */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F37EBF861D81ACF7001CEED1 /* Build configuration list for PBXNativeTarget "CYGAnalyseTool" */;
+			buildPhases = (
+				F37EBF551D81ACF7001CEED1 /* Sources */,
+				F37EBF561D81ACF7001CEED1 /* Frameworks */,
+				F37EBF571D81ACF7001CEED1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CYGAnalyseTool;
+			productName = CYGAnalyseTool;
+			productReference = F37EBF591D81ACF7001CEED1 /* CYGAnalyseTool.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F37EBF711D81ACF7001CEED1 /* CYGAnalyseToolTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F37EBF891D81ACF7001CEED1 /* Build configuration list for PBXNativeTarget "CYGAnalyseToolTests" */;
+			buildPhases = (
+				F37EBF6E1D81ACF7001CEED1 /* Sources */,
+				F37EBF6F1D81ACF7001CEED1 /* Frameworks */,
+				F37EBF701D81ACF7001CEED1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F37EBF741D81ACF7001CEED1 /* PBXTargetDependency */,
+			);
+			name = CYGAnalyseToolTests;
+			productName = CYGAnalyseToolTests;
+			productReference = F37EBF721D81ACF7001CEED1 /* CYGAnalyseToolTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F37EBF7C1D81ACF7001CEED1 /* CYGAnalyseToolUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F37EBF8C1D81ACF7001CEED1 /* Build configuration list for PBXNativeTarget "CYGAnalyseToolUITests" */;
+			buildPhases = (
+				F37EBF791D81ACF7001CEED1 /* Sources */,
+				F37EBF7A1D81ACF7001CEED1 /* Frameworks */,
+				F37EBF7B1D81ACF7001CEED1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F37EBF7F1D81ACF7001CEED1 /* PBXTargetDependency */,
+			);
+			name = CYGAnalyseToolUITests;
+			productName = CYGAnalyseToolUITests;
+			productReference = F37EBF7D1D81ACF7001CEED1 /* CYGAnalyseToolUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F37EBF511D81ACF7001CEED1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = CYGTX;
+				TargetAttributes = {
+					F37EBF581D81ACF7001CEED1 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					F37EBF711D81ACF7001CEED1 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = F37EBF581D81ACF7001CEED1;
+					};
+					F37EBF7C1D81ACF7001CEED1 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = F37EBF581D81ACF7001CEED1;
+					};
+				};
+			};
+			buildConfigurationList = F37EBF541D81ACF7001CEED1 /* Build configuration list for PBXProject "CYGAnalyseTool" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F37EBF501D81ACF7001CEED1;
+			productRefGroup = F37EBF5A1D81ACF7001CEED1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F37EBF581D81ACF7001CEED1 /* CYGAnalyseTool */,
+				F37EBF711D81ACF7001CEED1 /* CYGAnalyseToolTests */,
+				F37EBF7C1D81ACF7001CEED1 /* CYGAnalyseToolUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F37EBF571D81ACF7001CEED1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F37EBF6C1D81ACF7001CEED1 /* LaunchScreen.storyboard in Resources */,
+				F37EBF691D81ACF7001CEED1 /* Assets.xcassets in Resources */,
+				F37EBF671D81ACF7001CEED1 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F37EBF701D81ACF7001CEED1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F37EBF7B1D81ACF7001CEED1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F37EBF551D81ACF7001CEED1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F37EBF641D81ACF7001CEED1 /* ViewController.m in Sources */,
+				F37EBF611D81ACF7001CEED1 /* AppDelegate.m in Sources */,
+				F37EBF5E1D81ACF7001CEED1 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F37EBF6E1D81ACF7001CEED1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F37EBF771D81ACF7001CEED1 /* CYGAnalyseToolTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F37EBF791D81ACF7001CEED1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F37EBF821D81ACF7001CEED1 /* CYGAnalyseToolUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F37EBF741D81ACF7001CEED1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F37EBF581D81ACF7001CEED1 /* CYGAnalyseTool */;
+			targetProxy = F37EBF731D81ACF7001CEED1 /* PBXContainerItemProxy */;
+		};
+		F37EBF7F1D81ACF7001CEED1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F37EBF581D81ACF7001CEED1 /* CYGAnalyseTool */;
+			targetProxy = F37EBF7E1D81ACF7001CEED1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F37EBF651D81ACF7001CEED1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F37EBF661D81ACF7001CEED1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F37EBF6A1D81ACF7001CEED1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F37EBF6B1D81ACF7001CEED1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F37EBF841D81ACF7001CEED1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		F37EBF851D81ACF7001CEED1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F37EBF871D81ACF7001CEED1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = CYGAnalyseTool/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = chunyu.CYGAnalyseTool;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F37EBF881D81ACF7001CEED1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = CYGAnalyseTool/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = chunyu.CYGAnalyseTool;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		F37EBF8A1D81ACF7001CEED1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = CYGAnalyseToolTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = chunyu.CYGAnalyseToolTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CYGAnalyseTool.app/CYGAnalyseTool";
+			};
+			name = Debug;
+		};
+		F37EBF8B1D81ACF7001CEED1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = CYGAnalyseToolTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = chunyu.CYGAnalyseToolTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CYGAnalyseTool.app/CYGAnalyseTool";
+			};
+			name = Release;
+		};
+		F37EBF8D1D81ACF7001CEED1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = CYGAnalyseToolUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = chunyu.CYGAnalyseToolUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = CYGAnalyseTool;
+			};
+			name = Debug;
+		};
+		F37EBF8E1D81ACF7001CEED1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = CYGAnalyseToolUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = chunyu.CYGAnalyseToolUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = CYGAnalyseTool;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F37EBF541D81ACF7001CEED1 /* Build configuration list for PBXProject "CYGAnalyseTool" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F37EBF841D81ACF7001CEED1 /* Debug */,
+				F37EBF851D81ACF7001CEED1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F37EBF861D81ACF7001CEED1 /* Build configuration list for PBXNativeTarget "CYGAnalyseTool" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F37EBF871D81ACF7001CEED1 /* Debug */,
+				F37EBF881D81ACF7001CEED1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F37EBF891D81ACF7001CEED1 /* Build configuration list for PBXNativeTarget "CYGAnalyseToolTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F37EBF8A1D81ACF7001CEED1 /* Debug */,
+				F37EBF8B1D81ACF7001CEED1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F37EBF8C1D81ACF7001CEED1 /* Build configuration list for PBXNativeTarget "CYGAnalyseToolUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F37EBF8D1D81ACF7001CEED1 /* Debug */,
+				F37EBF8E1D81ACF7001CEED1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F37EBF511D81ACF7001CEED1 /* Project object */;
+}
