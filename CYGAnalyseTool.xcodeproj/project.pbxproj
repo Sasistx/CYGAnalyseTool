@@ -10,11 +10,15 @@
 		F37EBF5E1D81ACF7001CEED1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F37EBF5D1D81ACF7001CEED1 /* main.m */; };
 		F37EBF611D81ACF7001CEED1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F37EBF601D81ACF7001CEED1 /* AppDelegate.m */; };
 		F37EBF641D81ACF7001CEED1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F37EBF631D81ACF7001CEED1 /* ViewController.m */; };
-		F37EBF671D81ACF7001CEED1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F37EBF651D81ACF7001CEED1 /* Main.storyboard */; };
 		F37EBF691D81ACF7001CEED1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F37EBF681D81ACF7001CEED1 /* Assets.xcassets */; };
 		F37EBF6C1D81ACF7001CEED1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F37EBF6A1D81ACF7001CEED1 /* LaunchScreen.storyboard */; };
 		F37EBF771D81ACF7001CEED1 /* CYGAnalyseToolTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F37EBF761D81ACF7001CEED1 /* CYGAnalyseToolTests.m */; };
 		F37EBF821D81ACF7001CEED1 /* CYGAnalyseToolUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F37EBF811D81ACF7001CEED1 /* CYGAnalyseToolUITests.m */; };
+		F37EBF9B1D81ADAE001CEED1 /* CYUrlAnalyseListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F37EBF921D81ADAE001CEED1 /* CYUrlAnalyseListCell.m */; };
+		F37EBF9C1D81ADAE001CEED1 /* CYUrlAnalyseListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F37EBF941D81ADAE001CEED1 /* CYUrlAnalyseListViewController.m */; };
+		F37EBF9D1D81ADAE001CEED1 /* CYUrlAnalyseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F37EBF961D81ADAE001CEED1 /* CYUrlAnalyseManager.m */; };
+		F37EBF9E1D81ADAE001CEED1 /* CYUrlAnalyseProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = F37EBF981D81ADAE001CEED1 /* CYUrlAnalyseProtocol.m */; };
+		F37EBF9F1D81ADAE001CEED1 /* CYUrlAnalyzeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F37EBF9A1D81ADAE001CEED1 /* CYUrlAnalyzeDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +45,6 @@
 		F37EBF601D81ACF7001CEED1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		F37EBF621D81ACF7001CEED1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		F37EBF631D81ACF7001CEED1 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		F37EBF661D81ACF7001CEED1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F37EBF681D81ACF7001CEED1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F37EBF6B1D81ACF7001CEED1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F37EBF6D1D81ACF7001CEED1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -51,6 +54,17 @@
 		F37EBF7D1D81ACF7001CEED1 /* CYGAnalyseToolUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CYGAnalyseToolUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F37EBF811D81ACF7001CEED1 /* CYGAnalyseToolUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYGAnalyseToolUITests.m; sourceTree = "<group>"; };
 		F37EBF831D81ACF7001CEED1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F37EBF911D81ADAE001CEED1 /* CYUrlAnalyseListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYUrlAnalyseListCell.h; sourceTree = "<group>"; };
+		F37EBF921D81ADAE001CEED1 /* CYUrlAnalyseListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYUrlAnalyseListCell.m; sourceTree = "<group>"; };
+		F37EBF931D81ADAE001CEED1 /* CYUrlAnalyseListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYUrlAnalyseListViewController.h; sourceTree = "<group>"; };
+		F37EBF941D81ADAE001CEED1 /* CYUrlAnalyseListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYUrlAnalyseListViewController.m; sourceTree = "<group>"; };
+		F37EBF951D81ADAE001CEED1 /* CYUrlAnalyseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYUrlAnalyseManager.h; sourceTree = "<group>"; };
+		F37EBF961D81ADAE001CEED1 /* CYUrlAnalyseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYUrlAnalyseManager.m; sourceTree = "<group>"; };
+		F37EBF971D81ADAE001CEED1 /* CYUrlAnalyseProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYUrlAnalyseProtocol.h; sourceTree = "<group>"; };
+		F37EBF981D81ADAE001CEED1 /* CYUrlAnalyseProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYUrlAnalyseProtocol.m; sourceTree = "<group>"; };
+		F37EBF991D81ADAE001CEED1 /* CYUrlAnalyzeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYUrlAnalyzeDetailViewController.h; sourceTree = "<group>"; };
+		F37EBF9A1D81ADAE001CEED1 /* CYUrlAnalyzeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYUrlAnalyzeDetailViewController.m; sourceTree = "<group>"; };
+		F37EBFA01D81AF4B001CEED1 /* CYGToolDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYGToolDefines.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,11 +115,11 @@
 		F37EBF5B1D81ACF7001CEED1 /* CYGAnalyseTool */ = {
 			isa = PBXGroup;
 			children = (
+				F37EBF8F1D81ADAE001CEED1 /* Tools */,
 				F37EBF5F1D81ACF7001CEED1 /* AppDelegate.h */,
 				F37EBF601D81ACF7001CEED1 /* AppDelegate.m */,
 				F37EBF621D81ACF7001CEED1 /* ViewController.h */,
 				F37EBF631D81ACF7001CEED1 /* ViewController.m */,
-				F37EBF651D81ACF7001CEED1 /* Main.storyboard */,
 				F37EBF681D81ACF7001CEED1 /* Assets.xcassets */,
 				F37EBF6A1D81ACF7001CEED1 /* LaunchScreen.storyboard */,
 				F37EBF6D1D81ACF7001CEED1 /* Info.plist */,
@@ -138,6 +152,32 @@
 				F37EBF831D81ACF7001CEED1 /* Info.plist */,
 			);
 			path = CYGAnalyseToolUITests;
+			sourceTree = "<group>";
+		};
+		F37EBF8F1D81ADAE001CEED1 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				F37EBF901D81ADAE001CEED1 /* UrlAnalyse */,
+				F37EBFA01D81AF4B001CEED1 /* CYGToolDefines.h */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		F37EBF901D81ADAE001CEED1 /* UrlAnalyse */ = {
+			isa = PBXGroup;
+			children = (
+				F37EBF911D81ADAE001CEED1 /* CYUrlAnalyseListCell.h */,
+				F37EBF921D81ADAE001CEED1 /* CYUrlAnalyseListCell.m */,
+				F37EBF931D81ADAE001CEED1 /* CYUrlAnalyseListViewController.h */,
+				F37EBF941D81ADAE001CEED1 /* CYUrlAnalyseListViewController.m */,
+				F37EBF951D81ADAE001CEED1 /* CYUrlAnalyseManager.h */,
+				F37EBF961D81ADAE001CEED1 /* CYUrlAnalyseManager.m */,
+				F37EBF971D81ADAE001CEED1 /* CYUrlAnalyseProtocol.h */,
+				F37EBF981D81ADAE001CEED1 /* CYUrlAnalyseProtocol.m */,
+				F37EBF991D81ADAE001CEED1 /* CYUrlAnalyzeDetailViewController.h */,
+				F37EBF9A1D81ADAE001CEED1 /* CYUrlAnalyzeDetailViewController.m */,
+			);
+			path = UrlAnalyse;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,7 +285,6 @@
 			files = (
 				F37EBF6C1D81ACF7001CEED1 /* LaunchScreen.storyboard in Resources */,
 				F37EBF691D81ACF7001CEED1 /* Assets.xcassets in Resources */,
-				F37EBF671D81ACF7001CEED1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,6 +310,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F37EBF641D81ACF7001CEED1 /* ViewController.m in Sources */,
+				F37EBF9B1D81ADAE001CEED1 /* CYUrlAnalyseListCell.m in Sources */,
+				F37EBF9F1D81ADAE001CEED1 /* CYUrlAnalyzeDetailViewController.m in Sources */,
+				F37EBF9C1D81ADAE001CEED1 /* CYUrlAnalyseListViewController.m in Sources */,
+				F37EBF9E1D81ADAE001CEED1 /* CYUrlAnalyseProtocol.m in Sources */,
+				F37EBF9D1D81ADAE001CEED1 /* CYUrlAnalyseManager.m in Sources */,
 				F37EBF611D81ACF7001CEED1 /* AppDelegate.m in Sources */,
 				F37EBF5E1D81ACF7001CEED1 /* main.m in Sources */,
 			);
@@ -308,14 +352,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		F37EBF651D81ACF7001CEED1 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F37EBF661D81ACF7001CEED1 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		F37EBF6A1D81ACF7001CEED1 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -414,6 +450,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = CYGAnalyseTool/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = chunyu.CYGAnalyseTool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -425,6 +462,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = CYGAnalyseTool/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = chunyu.CYGAnalyseTool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
