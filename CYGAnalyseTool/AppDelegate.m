@@ -8,6 +8,9 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
+#import "CYGToolListViewController.h"
+#import "CYUrlAnalyseManager.h"
+#import "CYUrlAnalyseProtocol.h"
 
 @interface AppDelegate ()
 
@@ -22,8 +25,12 @@
     
     self.window.backgroundColor = [UIColor whiteColor];
     
-    ViewController* controller = [[ViewController alloc] init];
-    self.window.rootViewController = controller;
+    [[CYUrlAnalyseManager defaultManager] registAnalyse];
+    [NSURLProtocol registerClass:[CYUrlAnalyseProtocol class]];
+    
+    CYGToolListViewController* controller = [[CYGToolListViewController alloc] init];
+    UINavigationController* navi = [[UINavigationController alloc] initWithRootViewController:controller];
+    self.window.rootViewController = navi;
     
     [self.window makeKeyAndVisible];
     
