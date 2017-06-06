@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "CYGAnalyseTool"
-  s.version      = "1.0.1"
+  s.version      = "1.0.2"
   s.summary      = "一些调试用工具"
   s.description  = "Url请求结果展示工具&UIDebuggingInformationOverlay"
 

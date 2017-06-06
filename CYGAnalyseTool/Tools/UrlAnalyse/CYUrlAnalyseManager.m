@@ -7,7 +7,7 @@
 //
 
 #import "CYUrlAnalyseManager.h"
-#import "CYUrlAnalyseListViewController.h"
+#import "CYGToolListViewController.h"
 #import <CoreMotion/CoreMotion.h>
 
 NSString* const CYUrlAnalyseChangeKey = @"CYUrlAnalyseChangeKey";
@@ -110,7 +110,7 @@ static CYUrlAnalyseManager* defaultManager = nil;
     if (_isShown) {
         return;
     }
-    CYUrlAnalyseListViewController* controller = [[CYUrlAnalyseListViewController alloc] init];
+    CYGToolListViewController* controller = [[CYGToolListViewController alloc] init];
     UINavigationController* navi = [[UINavigationController alloc] initWithRootViewController:controller];
     UIViewController* currentController = [UIApplication sharedApplication].keyWindow.rootViewController;
     [currentController presentViewController:navi animated:YES completion:Nil];
