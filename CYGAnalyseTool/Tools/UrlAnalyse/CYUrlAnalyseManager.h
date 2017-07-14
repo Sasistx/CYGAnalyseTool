@@ -26,7 +26,9 @@ extern NSString* const CYRequestUid;
 @interface CYUrlAnalyseManager : NSObject
 
 @property (nonatomic, strong, readonly) NSMutableArray* urlArray;
-@property (nonatomic) BOOL isShown;
+
+@property (nonatomic, getter=isEnableUrlAnalyse) BOOL enableUrlAnalyse; //default is YES
+@property (nonatomic, getter=isEnableOverlay) BOOL enableOverlay; //default is YES
 
 + (CYUrlAnalyseManager*)defaultManager;
 
@@ -34,8 +36,13 @@ extern NSString* const CYRequestUid;
 
 - (void)cleanAllObejct;
 
+- (void)cleanUrlController;
+
 - (void)registAnalyse;
 
+/**
+ 关闭所有测试监控
+ */
 - (void)logoutAnalyse;
 
 @end

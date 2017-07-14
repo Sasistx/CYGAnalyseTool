@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F326E3161F189E10003E9D01 /* CYGToolListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F326E3151F189E10003E9D01 /* CYGToolListViewController.m */; };
 		F37EBF5E1D81ACF7001CEED1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F37EBF5D1D81ACF7001CEED1 /* main.m */; };
 		F37EBF611D81ACF7001CEED1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F37EBF601D81ACF7001CEED1 /* AppDelegate.m */; };
 		F37EBF641D81ACF7001CEED1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F37EBF631D81ACF7001CEED1 /* ViewController.m */; };
@@ -19,7 +20,6 @@
 		F37EBF9D1D81ADAE001CEED1 /* CYUrlAnalyseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F37EBF961D81ADAE001CEED1 /* CYUrlAnalyseManager.m */; };
 		F37EBF9E1D81ADAE001CEED1 /* CYUrlAnalyseProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = F37EBF981D81ADAE001CEED1 /* CYUrlAnalyseProtocol.m */; };
 		F37EBF9F1D81ADAE001CEED1 /* CYUrlAnalyzeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F37EBF9A1D81ADAE001CEED1 /* CYUrlAnalyzeDetailViewController.m */; };
-		F3E9E0A71EDFB544006CE9D6 /* CYGToolListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3E9E0A61EDFB544006CE9D6 /* CYGToolListViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F326E3141F189E10003E9D01 /* CYGToolListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYGToolListViewController.h; sourceTree = "<group>"; };
+		F326E3151F189E10003E9D01 /* CYGToolListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYGToolListViewController.m; sourceTree = "<group>"; };
 		F37EBF591D81ACF7001CEED1 /* CYGAnalyseTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CYGAnalyseTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F37EBF5D1D81ACF7001CEED1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F37EBF5F1D81ACF7001CEED1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -66,8 +68,6 @@
 		F37EBF991D81ADAE001CEED1 /* CYUrlAnalyzeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYUrlAnalyzeDetailViewController.h; sourceTree = "<group>"; };
 		F37EBF9A1D81ADAE001CEED1 /* CYUrlAnalyzeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYUrlAnalyzeDetailViewController.m; sourceTree = "<group>"; };
 		F37EBFA01D81AF4B001CEED1 /* CYGToolDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYGToolDefines.h; sourceTree = "<group>"; };
-		F3E9E0A51EDFB544006CE9D6 /* CYGToolListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYGToolListViewController.h; sourceTree = "<group>"; };
-		F3E9E0A61EDFB544006CE9D6 /* CYGToolListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYGToolListViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +118,8 @@
 		F37EBF5B1D81ACF7001CEED1 /* CYGAnalyseTool */ = {
 			isa = PBXGroup;
 			children = (
+				F326E3141F189E10003E9D01 /* CYGToolListViewController.h */,
+				F326E3151F189E10003E9D01 /* CYGToolListViewController.m */,
 				F37EBF8F1D81ADAE001CEED1 /* Tools */,
 				F37EBF5F1D81ACF7001CEED1 /* AppDelegate.h */,
 				F37EBF601D81ACF7001CEED1 /* AppDelegate.m */,
@@ -162,8 +164,6 @@
 			children = (
 				F37EBF901D81ADAE001CEED1 /* UrlAnalyse */,
 				F37EBFA01D81AF4B001CEED1 /* CYGToolDefines.h */,
-				F3E9E0A51EDFB544006CE9D6 /* CYGToolListViewController.h */,
-				F3E9E0A61EDFB544006CE9D6 /* CYGToolListViewController.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -247,7 +247,7 @@
 		F37EBF511D81ACF7001CEED1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = CYGTX;
 				TargetAttributes = {
 					F37EBF581D81ACF7001CEED1 = {
@@ -318,7 +318,7 @@
 				F37EBF9B1D81ADAE001CEED1 /* CYUrlAnalyseListCell.m in Sources */,
 				F37EBF9F1D81ADAE001CEED1 /* CYUrlAnalyzeDetailViewController.m in Sources */,
 				F37EBF9C1D81ADAE001CEED1 /* CYUrlAnalyseListViewController.m in Sources */,
-				F3E9E0A71EDFB544006CE9D6 /* CYGToolListViewController.m in Sources */,
+				F326E3161F189E10003E9D01 /* CYGToolListViewController.m in Sources */,
 				F37EBF9E1D81ADAE001CEED1 /* CYUrlAnalyseProtocol.m in Sources */,
 				F37EBF9D1D81ADAE001CEED1 /* CYUrlAnalyseManager.m in Sources */,
 				F37EBF611D81ACF7001CEED1 /* AppDelegate.m in Sources */,
@@ -383,8 +383,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -427,8 +429,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -457,7 +461,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = CYGAnalyseTool/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = chunyu.CYGAnalyseTool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -470,7 +474,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = CYGAnalyseTool/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = chunyu.CYGAnalyseTool;
 				PRODUCT_NAME = "$(TARGET_NAME)";

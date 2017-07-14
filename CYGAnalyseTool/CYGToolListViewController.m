@@ -24,9 +24,6 @@
     self.tableview.delegate = self;
     self.tableview.dataSource = self;
     [self.view addSubview:self.tableview];
-    
-    UIBarButtonItem* item = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(closeCurrentView:)];
-    self.navigationItem.rightBarButtonItem = item;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,11 +31,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)closeCurrentView:(id)sender
-{
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:Nil];
-    [CYUrlAnalyseManager defaultManager].isShown = NO;
-}
 
 #pragma mark - tableview delegate & datasource
 

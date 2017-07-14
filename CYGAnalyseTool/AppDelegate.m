@@ -26,9 +26,8 @@
     self.window.backgroundColor = [UIColor whiteColor];
     
     [[CYUrlAnalyseManager defaultManager] registAnalyse];
-    [NSURLProtocol registerClass:[CYUrlAnalyseProtocol class]];
     
-    CYGToolListViewController* controller = [[CYGToolListViewController alloc] init];
+    ViewController* controller = [[ViewController alloc] init];
     UINavigationController* navi = [[UINavigationController alloc] initWithRootViewController:controller];
     self.window.rootViewController = navi;
     

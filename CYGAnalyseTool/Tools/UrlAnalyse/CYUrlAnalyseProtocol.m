@@ -9,25 +9,23 @@
 #import "CYUrlAnalyseProtocol.h"
 #import "CYUrlAnalyseManager.h"
 
-@interface CYUrlAnalyseProtocol()
-@property (nonatomic, strong) NSURLConnection* connection;
+@interface CYUrlAnalyseProtocol() <NSURLSessionTaskDelegate>
+@property (nonatomic, strong) NSURLSessionTask* sessionTask;
 @property (nonatomic, strong) NSDate* startDate;
 @property (nonatomic, strong) NSMutableDictionary* urlInfo;
 @end
 
 @implementation CYUrlAnalyseProtocol
 
-+ (BOOL)canInitWithRequest:(NSURLRequest *)request
-{
-    //只处理http和https请求
-    NSString *scheme = [[request URL] scheme];
++ (BOOL)canInitWithTask:(NSURLSessionTask *)task {
+    
+    NSString *scheme = [task.originalRequest.URL scheme];
     if ( ([scheme caseInsensitiveCompare:@"http"] == NSOrderedSame ||
           [scheme caseInsensitiveCompare:@"https"] == NSOrderedSame))
     {
-        if ([NSURLProtocol propertyForKey:CYURLProtocolHandledKey inRequest:request]) {
+        if ([NSURLProtocol propertyForKey:CYURLProtocolHandledKey inRequest:task.originalRequest]) {
             return NO;
         }
-        
         return YES;
     }
     return NO;
@@ -50,7 +48,10 @@
     _urlInfo[CYRequestUid] = [NSUUID UUID].UUIDString;
     NSMutableURLRequest *mutableReqeust = [[self request] mutableCopy];
     [NSURLProtocol setProperty:@YES forKey:CYURLProtocolHandledKey inRequest:mutableReqeust];
-    self.connection = [NSURLConnection connectionWithRequest:mutableReqeust delegate:self];
+    NSURLSession* session = [NSURLSession sharedSession];
+    [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue:nil];
+    self.sessionTask = [session dataTaskWithRequest:mutableReqeust];
+    [self.sessionTask resume];
 }
 
 - (void)stopLoading
@@ -63,10 +64,15 @@
     _urlInfo[CYRequestHeaderFields] = self.request.allHTTPHeaderFields;
     _urlInfo[CYHttpMethod] = self.request.HTTPMethod;
     [[CYUrlAnalyseManager defaultManager] addObjectToUrlArray:_urlInfo];
-    [self.connection cancel];
+    if (self.sessionTask != nil) {
+        
+        [self.sessionTask cancel];
+        self.sessionTask = nil;
+    }
 }
 
-- (void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition))completionHandler {
+
     NSString* string = [[NSString alloc] initWithData:self.request.HTTPBody encoding:NSUTF8StringEncoding];
     _urlInfo[CYResponseBody] = string ? : @"";
     _urlInfo[CYResponseUrl] = response.URL.absoluteString;
@@ -79,18 +85,23 @@
     [self.client URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageNotAllowed];
 }
 
-- (void) connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
+    didReceiveData:(NSData *)data {
+
     [self.client URLProtocol:self didLoadData:data];
 }
 
-- (void) connectionDidFinishLoading:(NSURLConnection *)connection {
-    [self.client URLProtocolDidFinishLoading:self];
+-(void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
+
+    if (error) {
+        
+        _urlInfo[CYRequestErrorInfo] = error.userInfo;
+        [self.client URLProtocol:self didFailWithError:error];
+    } else {
+        
+        [self.client URLProtocolDidFinishLoading:self];
+    }
 }
 
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
-{
-    _urlInfo[CYRequestErrorInfo] = error.userInfo;
-    [self.client URLProtocol:self didFailWithError:error];
-}
 
 @end

@@ -47,7 +47,7 @@
 - (void)closeCurrentView:(id)sender
 {
     [self.presentingViewController dismissViewControllerAnimated:YES completion:Nil];
-    [CYUrlAnalyseManager defaultManager].isShown = NO;
+    [[CYUrlAnalyseManager defaultManager] cleanUrlController];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
