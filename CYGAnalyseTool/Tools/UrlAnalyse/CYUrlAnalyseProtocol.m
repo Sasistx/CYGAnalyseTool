@@ -17,6 +17,20 @@
 
 @implementation CYUrlAnalyseProtocol
 
++ (BOOL)canInitWithRequest:(NSURLRequest *)request {
+
+    NSString *scheme = [request.URL scheme];
+    if ( ([scheme caseInsensitiveCompare:@"http"] == NSOrderedSame ||
+          [scheme caseInsensitiveCompare:@"https"] == NSOrderedSame))
+    {
+        if ([NSURLProtocol propertyForKey:CYURLProtocolHandledKey inRequest:request]) {
+            return NO;
+        }
+        return YES;
+    }
+    return NO;
+}
+
 + (BOOL)canInitWithTask:(NSURLSessionTask *)task {
     
     NSString *scheme = [task.originalRequest.URL scheme];
