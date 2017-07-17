@@ -8,8 +8,9 @@
 
 #import "CYUrlAnalyseProtocol.h"
 #import "CYUrlAnalyseManager.h"
+#import "CYUrlAnalyseDemux.h"
 
-@interface CYUrlAnalyseProtocol() <NSURLSessionTaskDelegate>
+@interface CYUrlAnalyseProtocol() <NSURLSessionDataDelegate>
 @property (nonatomic, strong) NSURLSessionTask* sessionTask;
 @property (nonatomic, strong) NSDate* startDate;
 @property (nonatomic, strong) NSMutableDictionary* urlInfo;
@@ -62,9 +63,8 @@
     _urlInfo[CYRequestUid] = [NSUUID UUID].UUIDString;
     NSMutableURLRequest *mutableReqeust = [[self request] mutableCopy];
     [NSURLProtocol setProperty:@YES forKey:CYURLProtocolHandledKey inRequest:mutableReqeust];
-    NSURLSession* session = [NSURLSession sharedSession];
-    [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue:nil];
-    self.sessionTask = [session dataTaskWithRequest:mutableReqeust];
+    
+    self.sessionTask = [[self sharedDemux] dataTaskWithRequest:mutableReqeust delegate:self];
     [self.sessionTask resume];
 }
 
@@ -83,6 +83,20 @@
         [self.sessionTask cancel];
         self.sessionTask = nil;
     }
+}
+
+- (CYUrlAnalyseDemux *)sharedDemux {
+
+    static dispatch_once_t onceToken;
+    static CYUrlAnalyseDemux* analyseDemux;
+    dispatch_once(&onceToken, ^{
+        
+        NSURLSessionConfiguration * config = [NSURLSessionConfiguration defaultSessionConfiguration];
+        config.protocolClasses = @[self];
+        analyseDemux = [[CYUrlAnalyseDemux alloc] initWithConfiguration:config];
+    });
+    
+    return analyseDemux;
 }
 
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition))completionHandler {

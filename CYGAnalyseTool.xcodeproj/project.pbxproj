@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F326E3161F189E10003E9D01 /* CYGToolListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F326E3151F189E10003E9D01 /* CYGToolListViewController.m */; };
+		F326E3191F1CA1DA003E9D01 /* CYUrlAnalyseDemux.m in Sources */ = {isa = PBXBuildFile; fileRef = F326E3181F1CA1DA003E9D01 /* CYUrlAnalyseDemux.m */; };
 		F37EBF5E1D81ACF7001CEED1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F37EBF5D1D81ACF7001CEED1 /* main.m */; };
 		F37EBF611D81ACF7001CEED1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F37EBF601D81ACF7001CEED1 /* AppDelegate.m */; };
 		F37EBF641D81ACF7001CEED1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F37EBF631D81ACF7001CEED1 /* ViewController.m */; };
@@ -42,6 +43,8 @@
 /* Begin PBXFileReference section */
 		F326E3141F189E10003E9D01 /* CYGToolListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYGToolListViewController.h; sourceTree = "<group>"; };
 		F326E3151F189E10003E9D01 /* CYGToolListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYGToolListViewController.m; sourceTree = "<group>"; };
+		F326E3171F1CA1DA003E9D01 /* CYUrlAnalyseDemux.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYUrlAnalyseDemux.h; sourceTree = "<group>"; };
+		F326E3181F1CA1DA003E9D01 /* CYUrlAnalyseDemux.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYUrlAnalyseDemux.m; sourceTree = "<group>"; };
 		F37EBF591D81ACF7001CEED1 /* CYGAnalyseTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CYGAnalyseTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F37EBF5D1D81ACF7001CEED1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F37EBF5F1D81ACF7001CEED1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -181,6 +184,8 @@
 				F37EBF981D81ADAE001CEED1 /* CYUrlAnalyseProtocol.m */,
 				F37EBF991D81ADAE001CEED1 /* CYUrlAnalyzeDetailViewController.h */,
 				F37EBF9A1D81ADAE001CEED1 /* CYUrlAnalyzeDetailViewController.m */,
+				F326E3171F1CA1DA003E9D01 /* CYUrlAnalyseDemux.h */,
+				F326E3181F1CA1DA003E9D01 /* CYUrlAnalyseDemux.m */,
 			);
 			path = UrlAnalyse;
 			sourceTree = "<group>";
@@ -321,6 +326,7 @@
 				F326E3161F189E10003E9D01 /* CYGToolListViewController.m in Sources */,
 				F37EBF9E1D81ADAE001CEED1 /* CYUrlAnalyseProtocol.m in Sources */,
 				F37EBF9D1D81ADAE001CEED1 /* CYUrlAnalyseManager.m in Sources */,
+				F326E3191F1CA1DA003E9D01 /* CYUrlAnalyseDemux.m in Sources */,
 				F37EBF611D81ACF7001CEED1 /* AppDelegate.m in Sources */,
 				F37EBF5E1D81ACF7001CEED1 /* main.m in Sources */,
 			);
