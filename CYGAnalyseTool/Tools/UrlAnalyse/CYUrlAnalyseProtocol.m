@@ -11,7 +11,6 @@
 #import "CYUrlAnalyseDemux.h"
 
 @interface CYUrlAnalyseProtocol() <NSURLSessionDataDelegate>
-@property (nonatomic, strong) NSURLSessionTask* sessionTask;
 @property (nonatomic, strong) NSDate* startDate;
 @property (nonatomic, strong) NSMutableDictionary* urlInfo;
 @end
@@ -32,28 +31,10 @@
     return NO;
 }
 
-+ (BOOL)canInitWithTask:(NSURLSessionTask *)task {
-    
-    NSString *scheme = [task.originalRequest.URL scheme];
-    if ( ([scheme caseInsensitiveCompare:@"http"] == NSOrderedSame ||
-          [scheme caseInsensitiveCompare:@"https"] == NSOrderedSame))
-    {
-        if ([NSURLProtocol propertyForKey:CYURLProtocolHandledKey inRequest:task.originalRequest]) {
-            return NO;
-        }
-        return YES;
-    }
-    return NO;
-}
 
 + (NSURLRequest *)canonicalRequestForRequest:(NSURLRequest *)request
 {
     return request;
-}
-
-+ (BOOL)requestIsCacheEquivalent:(NSURLRequest *)a toRequest:(NSURLRequest *)b
-{
-    return [super requestIsCacheEquivalent:a toRequest:b];
 }
 
 - (void)startLoading
@@ -62,30 +43,30 @@
     _urlInfo = [NSMutableDictionary dictionary];
     _urlInfo[CYRequestUid] = [NSUUID UUID].UUIDString;
     NSMutableURLRequest *mutableReqeust = [[self request] mutableCopy];
-    [NSURLProtocol setProperty:@YES forKey:CYURLProtocolHandledKey inRequest:mutableReqeust];
+    [[self class] setProperty:@YES forKey:CYURLProtocolHandledKey inRequest:mutableReqeust];
     
-    self.sessionTask = [[self sharedDemux] dataTaskWithRequest:mutableReqeust delegate:self];
-    [self.sessionTask resume];
+    self.task = [[[self class] sharedDemux] dataTaskWithRequest:mutableReqeust delegate:self];
+    [self.task resume];
 }
 
 - (void)stopLoading
 {
     NSTimeInterval divTime = [[NSDate date] timeIntervalSinceDate:_startDate];
-        NSString* requestBody = [[NSString alloc] initWithData:self.request.HTTPBody encoding:NSUTF8StringEncoding];
+    NSString* requestBody = [[NSString alloc] initWithData:self.request.HTTPBody encoding:NSUTF8StringEncoding];
     _urlInfo[CYResponseTime] = @(divTime);
     _urlInfo[CYRequestUrl] = self.request.URL.absoluteString;
     _urlInfo[CYRequestBody] = requestBody ? : @"";
     _urlInfo[CYRequestHeaderFields] = self.request.allHTTPHeaderFields;
     _urlInfo[CYHttpMethod] = self.request.HTTPMethod;
     [[CYUrlAnalyseManager defaultManager] addObjectToUrlArray:_urlInfo];
-    if (self.sessionTask != nil) {
+    if (self.task != nil) {
         
-        [self.sessionTask cancel];
-        self.sessionTask = nil;
+        [self.task cancel];
+        self.task = nil;
     }
 }
 
-- (CYUrlAnalyseDemux *)sharedDemux {
++ (CYUrlAnalyseDemux *)sharedDemux {
 
     static dispatch_once_t onceToken;
     static CYUrlAnalyseDemux* analyseDemux;
@@ -97,6 +78,15 @@
     });
     
     return analyseDemux;
+}
+
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task willPerformHTTPRedirection:(NSHTTPURLResponse *)response newRequest:(NSURLRequest *)newRequest completionHandler:(void (^)(NSURLRequest *))completionHandler {
+
+    NSMutableURLRequest* redirectRequest = [newRequest mutableCopy];
+    
+    [[self class] removePropertyForKey:CYURLProtocolHandledKey inRequest:redirectRequest];
+    
+    [[self client] URLProtocol:self wasRedirectedToRequest:redirectRequest redirectResponse:response];
 }
 
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition))completionHandler {
@@ -119,7 +109,7 @@
     [self.client URLProtocol:self didLoadData:data];
 }
 
--(void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
 
     if (error) {
         
@@ -131,5 +121,14 @@
     }
 }
 
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask willCacheResponse:(NSCachedURLResponse *)proposedResponse completionHandler:(void (^)(NSCachedURLResponse *))completionHandler
+{
+    completionHandler(proposedResponse);
+}
+
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential *))completionHandler
+{
+    completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, nil);
+}
 
 @end

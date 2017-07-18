@@ -7,8 +7,9 @@
 //
 
 #import "ViewController.h"
+#import "CYUrlAnalyseProtocol.h"
 
-@interface ViewController ()
+@interface ViewController () <NSURLSessionDelegate, UIWebViewDelegate>
 
 @end
 
@@ -17,11 +18,73 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    UIWebView* webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
+    [self.view addSubview:webView];
+    NSURLRequest* request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.baidu.com"]];
+    [webView loadRequest:request];
+    webView.delegate = self;
+//    NSURLSessionConfiguration* config = [NSURLSessionConfiguration defaultSessionConfiguration];
+//    config.protocolClasses = @[self];
+//    NSURLSession* session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue:[NSOperationQueue mainQueue]];
+//    NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request];
+//    [task resume];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+
+    
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+
+    
+}
+
+- (void)buttonClicked:(UIButton *)button {
+
+    
+}
+
+//- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{
+//
+//    
+//}
+//
+//- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+//
+//    
+//}
+//
+//- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+//
+//    
+//}
+//
+//- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+//
+//    
+//}
+//
+//- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition))completionHandler {
+//    
+//
+//}
+//
+//- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
+//    didReceiveData:(NSData *)data {
+//    
+//    
+//}
+//
+//-(void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
+//    
+//}
+
+
 
 @end

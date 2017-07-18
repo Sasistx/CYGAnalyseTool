@@ -6,8 +6,10 @@
 //  Copyright © 2016年 SpringRain. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 @interface CYUrlAnalyseProtocol : NSURLProtocol
+
+@property (atomic, strong, readwrite) NSURLSessionDataTask * task;
 
 @end

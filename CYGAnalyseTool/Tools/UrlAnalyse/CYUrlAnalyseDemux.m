@@ -19,8 +19,8 @@
     self = [super init];
     if (self) {
         
-        _session = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:nil];
-        config = [NSURLSessionConfiguration defaultSessionConfiguration];
+        _session = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:[NSOperationQueue mainQueue]];
+        _session.sessionDescription = @"CYUrlAnalyseDemux";
     }
     return self;
 }

@@ -26,6 +26,7 @@
     self.window.backgroundColor = [UIColor whiteColor];
     
     [[CYUrlAnalyseManager defaultManager] registAnalyse];
+//    [NSURLProtocol registerClass:[CYTestProtocol class]];
     
     ViewController* controller = [[ViewController alloc] init];
     UINavigationController* navi = [[UINavigationController alloc] initWithRootViewController:controller];
