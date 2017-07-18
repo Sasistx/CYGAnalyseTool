@@ -23,6 +23,10 @@
     if ( ([scheme caseInsensitiveCompare:@"http"] == NSOrderedSame ||
           [scheme caseInsensitiveCompare:@"https"] == NSOrderedSame))
     {
+        if ([[request.URL absoluteString] containsString:@"localhost:"]) {
+            
+            return NO;
+        }
         if ([NSURLProtocol propertyForKey:CYURLProtocolHandledKey inRequest:request]) {
             return NO;
         }
