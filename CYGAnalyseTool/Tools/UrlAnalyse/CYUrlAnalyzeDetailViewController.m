@@ -100,7 +100,7 @@
     [_scrollView addSubview:responseLabel];
     NSMutableString* responseString = [[NSMutableString alloc] init];
     [responseString appendString:@"\n\nResponse:\n\n"];
-    [responseString appendFormat:@"response time:%@\n\n", _urlInfo[CYResponseTime]];
+    [responseString appendFormat:@"response time:%0.4fs\n\n", [_urlInfo[CYResponseTime] floatValue]];
     [responseString appendFormat:@"Method:%@  StatusCode:%@\n\n", _urlInfo[CYHttpMethod], _urlInfo[CYURLStatusCode]];
     [responseString appendFormat:@"MIME type: %@\n\n", _urlInfo[CYMIMEType]];
     [responseString appendFormat:@"Url: %@\n\n", _urlInfo[CYResponseUrl]];

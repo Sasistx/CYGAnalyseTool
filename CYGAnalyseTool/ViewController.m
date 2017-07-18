@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "CYUrlAnalyseProtocol.h"
+#import "CYUrlAnalyseManager.h"
 
 @interface ViewController () <NSURLSessionDelegate, UIWebViewDelegate>
 
@@ -23,11 +24,28 @@
     NSURLRequest* request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.baidu.com"]];
     [webView loadRequest:request];
     webView.delegate = self;
+    
+    UIBarButtonItem* leftItem = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(closeAnalyse:)];
+    self.navigationItem.rightBarButtonItem = leftItem;
+    
+    UIBarButtonItem* rightItem = [[UIBarButtonItem alloc] initWithTitle:@"Open" style:UIBarButtonItemStylePlain target:self action:@selector(openAnalyse:)];
+    self.navigationItem.leftBarButtonItem = rightItem;
+    
 //    NSURLSessionConfiguration* config = [NSURLSessionConfiguration defaultSessionConfiguration];
 //    config.protocolClasses = @[self];
 //    NSURLSession* session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue:[NSOperationQueue mainQueue]];
 //    NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request];
 //    [task resume];
+}
+
+- (void)closeAnalyse:(id)sender {
+
+    [[CYUrlAnalyseManager defaultManager] logoutAnalyse];
+}
+
+- (void)openAnalyse:(id)sender {
+
+    [[CYUrlAnalyseManager defaultManager] registAnalyse];
 }
 
 - (void)didReceiveMemoryWarning {

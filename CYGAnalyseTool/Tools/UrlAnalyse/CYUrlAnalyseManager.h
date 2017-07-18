@@ -38,6 +38,9 @@ extern NSString* const CYRequestUid;
 
 - (void)cleanUrlController;
 
+/**
+ 需要在应用启动后，网络请求开始之前调用此方法。
+ */
 - (void)registAnalyse;
 
 /**

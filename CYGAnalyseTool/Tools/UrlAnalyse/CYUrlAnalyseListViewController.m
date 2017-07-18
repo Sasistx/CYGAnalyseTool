@@ -21,17 +21,27 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"Url List";
-    // Do any additional setup after loading the view.
-    _tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
-    _tableView.delegate = self;
-    _tableView.dataSource = self;
-    [self.view addSubview:_tableView];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(urlAnalyseChanged:) name:CYUrlAnalyseChangeKey object:nil];
+    self.title = @"Analyse List";
     
-    UIBarButtonItem* item = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(closeCurrentView:)];
-    self.navigationItem.rightBarButtonItem = item;
+    UIBarButtonItem* leftItem = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(closeCurrentView:)];
+    self.navigationItem.rightBarButtonItem = leftItem;
+    
+    if ([CYUrlAnalyseManager defaultManager].isEnableUrlAnalyse) {
+        
+        _tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        [self.view addSubview:_tableView];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(urlAnalyseChanged:) name:CYUrlAnalyseChangeKey object:nil];
+    }
+    
+    if ([CYUrlAnalyseManager defaultManager].isEnableOverlay) {
+        
+        UIBarButtonItem* rightItem = [[UIBarButtonItem alloc] initWithTitle:@"overLay" style:UIBarButtonItemStylePlain target:self action:@selector(showOverlay:)];
+        self.navigationItem.leftBarButtonItem = rightItem;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,6 +52,20 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)showOverlay:(id)sender {
+
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:Nil];
+    [[CYUrlAnalyseManager defaultManager] cleanUrlController];
+#ifdef DEBUG
+    id informationOverlay = NSClassFromString(@"UIDebuggingInformationOverlay");
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+    [informationOverlay performSelector:@selector(prepareDebuggingOverlay)];
+    [[informationOverlay performSelector:@selector(overlay)] performSelector:@selector(toggleVisibility)];
+#pragma clang diagnostic pop
+#endif
 }
 
 - (void)closeCurrentView:(id)sender

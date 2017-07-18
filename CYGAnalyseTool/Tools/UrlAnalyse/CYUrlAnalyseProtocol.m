@@ -31,7 +31,6 @@
     return NO;
 }
 
-
 + (NSURLRequest *)canonicalRequestForRequest:(NSURLRequest *)request
 {
     return request;
@@ -99,8 +98,8 @@
         _urlInfo[CYResponseHeaderFields] = ((NSHTTPURLResponse*)response).allHeaderFields;
         _urlInfo[CYURLStatusCode] = @(((NSHTTPURLResponse*)response).statusCode);
     }
-    
     [self.client URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageNotAllowed];
+    completionHandler(NSURLSessionResponseAllow);
 }
 
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask

@@ -104,15 +104,7 @@ static CYUrlAnalyseManager* defaultManager = nil;
         @strongify(self);
         if (fabs(x)>2.0 ||fabs(y)>2.0 ||fabs(z)>2.0) {
             
-            if (self.isEnableUrlAnalyse && !self.urlController) {
-                
-                [self performSelectorOnMainThread:@selector(showAnalyseView) withObject:nil waitUntilDone:YES];
-            }
-            
-            if (self.isEnableOverlay && !self.overlayBtn) {
-                
-                [self performSelectorOnMainThread:@selector(showOverlay) withObject:nil waitUntilDone:YES];
-            }
+            [self performSelectorOnMainThread:@selector(showAnalyseView) withObject:nil waitUntilDone:YES];
         }
     }];
     
@@ -139,49 +131,6 @@ static CYUrlAnalyseManager* defaultManager = nil;
     UIViewController* currentController = [UIApplication sharedApplication].keyWindow.rootViewController;
     [currentController presentViewController:navi animated:YES completion:Nil];
     _urlController = controller;
-}
-
-- (void)showOverlay {
-
-    UIButton* overlayButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [overlayButton setTitle:@"T" forState:UIControlStateNormal];
-    [overlayButton addTarget:self action:@selector(overlayButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    [overlayButton setFrame:CGRectMake(-50, 0, 30, 30)];
-    [overlayButton.layer setCornerRadius:15];
-    [overlayButton.layer setMasksToBounds:YES];
-    [overlayButton.layer setBorderColor:[UIColor blueColor].CGColor];
-    [overlayButton.layer setBorderWidth:0.5];
-    UIViewController* currentController = [UIApplication sharedApplication].keyWindow.rootViewController;
-    [currentController.view addSubview:overlayButton];
-    _overlayBtn = overlayButton;
-    
-    [UIView animateWithDuration:0.7 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        
-        [overlayButton setFrame:CGRectMake(50, 200, 30, 30)];
-    } completion:^(BOOL finished) {
-        
-    }];
-    [self performSelector:@selector(hideOverlayButton) withObject:nil afterDelay:3];
-}
-
-- (void)hideOverlayButton {
-
-    [_overlayBtn removeFromSuperview];
-    _overlayBtn = nil;
-}
-
-- (void)overlayButtonClicked:(UIButton *)button {
-
-    [_overlayBtn removeFromSuperview];
-    _overlayBtn = nil;
-#ifdef DEBUG
-    id informationOverlay = NSClassFromString(@"UIDebuggingInformationOverlay");
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wundeclared-selector"
-    [informationOverlay performSelector:@selector(prepareDebuggingOverlay)];
-    [[informationOverlay performSelector:@selector(overlay)] performSelector:@selector(toggleVisibility)];
-#pragma clang diagnostic pop
-#endif
 }
 
 @end
