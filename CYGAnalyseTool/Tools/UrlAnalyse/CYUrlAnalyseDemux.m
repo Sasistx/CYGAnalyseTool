@@ -27,8 +27,8 @@
 
 - (NSURLSessionDataTask *)dataTaskWithRequest:(NSURLRequest *)request delegate:(id<NSURLSessionDataDelegate>)delegate {
 
+    self.delegate = delegate;
     NSURLSessionDataTask *task = [_session dataTaskWithRequest:request];
-    
     return task;
 }
 
