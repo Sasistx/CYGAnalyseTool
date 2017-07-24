@@ -121,7 +121,7 @@
 }
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
-
+    
     if (error == nil) {
         
         if (_data) {
@@ -129,36 +129,26 @@
             NSError* error = nil;
             id jsonObject = [NSJSONSerialization JSONObjectWithData:_data options:NSJSONReadingMutableContainers error:&error];
             
-            NSLog(@"---%@", jsonObject);
-            
-            NSString* test = [[NSString alloc] initWithData:_data encoding:NSUTF8StringEncoding];
-            NSLog(@"******%@", test);
-            
             if (!error && [NSJSONSerialization isValidJSONObject:jsonObject]) {
                 
                 NSError* jsonError = nil;
                 NSData* jsonData = [NSJSONSerialization dataWithJSONObject:jsonObject options:NSJSONWritingPrettyPrinted error:&jsonError];
-                if (!jsonError) {
+                if (!jsonError && jsonData) {
                     
-                    if (jsonData) {
-                        
-                        _urlInfo[CYRequestContent] = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-                    }
+                    NSString* jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+                    _urlInfo[CYRequestContent] = jsonString;
                 }
             }
-            
-
         }
         
         [[self client] URLProtocolDidFinishLoading:self];
     } else if ( [[error domain] isEqual:NSURLErrorDomain] && ([error code] == NSURLErrorCancelled) ) {
-
-        _data = nil;
+        
     } else {
         
-        _data = nil;
         [[self client] URLProtocol:self didFailWithError:error];
     }
+    _data = nil;
 }
 
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask willCacheResponse:(NSCachedURLResponse *)proposedResponse completionHandler:(void (^)(NSCachedURLResponse *))completionHandler

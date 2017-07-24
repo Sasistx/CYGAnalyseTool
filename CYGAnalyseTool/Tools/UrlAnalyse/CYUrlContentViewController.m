@@ -35,6 +35,7 @@
 - (void)showContent {
 
     UILabel* contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 30, self.view.frame.size.width - 100, 0)];
+    contentLabel.numberOfLines = 0;
     contentLabel.text = _urlInfo[CYRequestContent] ? : @"";
     [contentLabel sizeToFit];
     

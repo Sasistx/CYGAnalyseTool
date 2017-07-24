@@ -9,6 +9,7 @@
 #import "CYUrlBaseViewController.h"
 #import "CYUrlAnalyzeDetailViewController.h"
 #import "CYUrlContentViewController.h"
+#import "CYUrlAnalyseManager.h"
 
 @interface CYUrlBaseViewController ()
 @property (nonatomic, strong) NSMutableArray* segControllers;
@@ -39,11 +40,19 @@
     [_segControllers addObject:contentController];
     
     [self.view bringSubviewToFront:detailController.view];
+    
+    UIBarButtonItem* item = [[UIBarButtonItem alloc] initWithTitle:@"Copy" style:UIBarButtonItemStylePlain target:self action:@selector(copyButtonClicked:)];
+    self.navigationItem.rightBarButtonItem = item;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)dealloc {
+
+    
 }
 
 - (void)segmentDidChanged:(UISegmentedControl *)segment {
@@ -52,6 +61,28 @@
     UIViewController* controller = nil;
     controller = _segControllers[selectedIndex];
     [self.view bringSubviewToFront:controller.view];
+}
+
+- (void)copyButtonClicked:(id)sender
+{
+    __block NSString* urlString = _urlInfo[CYRequestUrl] ? : @"";
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:@"Select" preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"cancel"
+                                                      style:UIAlertActionStyleCancel
+                                                    handler:^(UIAlertAction *action) {
+                                                        
+                                                    }];
+    UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"url"
+                                                      style:UIAlertActionStyleDefault
+                                                    handler:^(UIAlertAction *action) {
+                                                        
+                                                        UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+                                                        [pasteboard setString:urlString];
+                                                    }];
+    [alertController addAction:action1];
+    [alertController addAction:action2];
+    [self.navigationController presentViewController:alertController animated:YES completion:Nil];
 }
 
 @end

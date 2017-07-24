@@ -11,7 +11,6 @@
 
 @interface CYUrlAnalyzeDetailViewController ()
 @property (nonatomic, strong) UIScrollView* scrollView;
-@property (nonatomic, copy) NSString* urlString;
 @end
 
 @implementation CYUrlAnalyzeDetailViewController
@@ -26,9 +25,6 @@
     
     _scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:_scrollView];
-    
-    UIBarButtonItem* item = [[UIBarButtonItem alloc] initWithTitle:@"Copy" style:UIBarButtonItemStylePlain target:self action:@selector(copyButtonClicked:)];
-    self.navigationItem.rightBarButtonItem = item;
     
     [self showUrlInfo];
 }
@@ -124,31 +120,6 @@
     labelOriY += (responseLabel.frame.size.height + 20);
     
     [_scrollView setContentSize:CGSizeMake(self.view.frame.size.width, labelOriY)];
-    
-    _urlString = _urlInfo[CYRequestUrl];
-}
-
-- (void)copyButtonClicked:(id)sender
-{
-    @weakify(self);
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:@"Select" preferredStyle:UIAlertControllerStyleActionSheet];
-    
-    UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"cancel"
-                                                      style:UIAlertActionStyleCancel
-                                                    handler:^(UIAlertAction *action) {
-                                                        
-                                                    }];
-    UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"url"
-                                                      style:UIAlertActionStyleDefault
-                                                    handler:^(UIAlertAction *action) {
-                                                        
-                                                        @strongify(self);
-                                                        UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-                                                        [pasteboard setString:self.urlString];
-                                                    }];
-    [alertController addAction:action1];
-    [alertController addAction:action2];
-    [self.navigationController presentViewController:alertController animated:YES completion:Nil];
 }
 
 @end

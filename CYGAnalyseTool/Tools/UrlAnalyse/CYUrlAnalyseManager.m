@@ -127,6 +127,11 @@ static CYUrlAnalyseManager* defaultManager = nil;
 
 - (void)showAnalyseView {
     
+    if (_urlController) {
+        
+        return;
+    }
+    
     CYUrlAnalyseListViewController* controller = [[CYUrlAnalyseListViewController alloc] init];
     UINavigationController* navi = [[UINavigationController alloc] initWithRootViewController:controller];
     UIViewController* currentController = [UIApplication sharedApplication].keyWindow.rootViewController;
