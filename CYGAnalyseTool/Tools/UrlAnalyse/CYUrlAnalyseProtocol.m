@@ -13,6 +13,7 @@
 @interface CYUrlAnalyseProtocol() <NSURLSessionDataDelegate>
 @property (nonatomic, strong) NSDate* startDate;
 @property (nonatomic, strong) NSMutableDictionary* urlInfo;
+@property (nonatomic, strong) NSMutableData* data;
 @end
 
 @implementation CYUrlAnalyseProtocol
@@ -27,6 +28,7 @@
             
             return NO;
         }
+        
         if ([NSURLProtocol propertyForKey:CYURLProtocolHandledKey inRequest:request]) {
             return NO;
         }
@@ -45,6 +47,7 @@
     _startDate = [NSDate date];
     _urlInfo = [NSMutableDictionary dictionary];
     _urlInfo[CYRequestUid] = [NSUUID UUID].UUIDString;
+    _data = [NSMutableData data];
     NSMutableURLRequest *mutableReqeust = [[self request] mutableCopy];
     [[self class] setProperty:@YES forKey:CYURLProtocolHandledKey inRequest:mutableReqeust];
     
@@ -113,6 +116,7 @@
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
     didReceiveData:(NSData *)data {
 
+    [_data appendData:data];
     [[self client] URLProtocol:self didLoadData:data];
 }
 
@@ -120,11 +124,39 @@
 
     if (error == nil) {
         
+        if (_data) {
+            
+            NSError* error = nil;
+            id jsonObject = [NSJSONSerialization JSONObjectWithData:_data options:NSJSONReadingMutableContainers error:&error];
+            
+            NSLog(@"---%@", jsonObject);
+            
+            NSString* test = [[NSString alloc] initWithData:_data encoding:NSUTF8StringEncoding];
+            NSLog(@"******%@", test);
+            
+            if (!error && [NSJSONSerialization isValidJSONObject:jsonObject]) {
+                
+                NSError* jsonError = nil;
+                NSData* jsonData = [NSJSONSerialization dataWithJSONObject:jsonObject options:NSJSONWritingPrettyPrinted error:&jsonError];
+                if (!jsonError) {
+                    
+                    if (jsonData) {
+                        
+                        _urlInfo[CYRequestContent] = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+                    }
+                }
+            }
+            
+
+        }
+        
         [[self client] URLProtocolDidFinishLoading:self];
     } else if ( [[error domain] isEqual:NSURLErrorDomain] && ([error code] == NSURLErrorCancelled) ) {
 
+        _data = nil;
     } else {
         
+        _data = nil;
         [[self client] URLProtocol:self didFailWithError:error];
     }
 }
@@ -137,9 +169,7 @@
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential *))completionHandler
 {
     if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
-    
-        NSString *host = challenge.protectionSpace.host;
-        NSLog(@"%@", host);
+
         NSURLCredential *credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
         completionHandler(NSURLSessionAuthChallengeUseCredential, credential);
     } else if([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodClientCertificate]) {

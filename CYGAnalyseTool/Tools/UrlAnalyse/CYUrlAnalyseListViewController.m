@@ -10,6 +10,7 @@
 #import "CYUrlAnalyseManager.h"
 #import "CYUrlAnalyseListCell.h"
 #import "CYUrlAnalyzeDetailViewController.h"
+#import "CYUrlBaseViewController.h"
 
 @interface CYUrlAnalyseListViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -29,7 +30,7 @@
     
     if ([CYUrlAnalyseManager defaultManager].isEnableUrlAnalyse) {
         
-        _tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         [self.view addSubview:_tableView];
@@ -102,7 +103,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    CYUrlAnalyzeDetailViewController* controller = [[CYUrlAnalyzeDetailViewController alloc] init];
+    CYUrlBaseViewController* controller = [[CYUrlBaseViewController alloc] init];
     controller.urlInfo = [CYUrlAnalyseManager defaultManager].urlArray[indexPath.row];
     [self.navigationController pushViewController:controller animated:YES];
 }

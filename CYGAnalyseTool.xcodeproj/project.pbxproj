@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		F326E3161F189E10003E9D01 /* CYGToolListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F326E3151F189E10003E9D01 /* CYGToolListViewController.m */; };
 		F326E3191F1CA1DA003E9D01 /* CYUrlAnalyseDemux.m in Sources */ = {isa = PBXBuildFile; fileRef = F326E3181F1CA1DA003E9D01 /* CYUrlAnalyseDemux.m */; };
+		F35990681F25DACC00FC07F5 /* CYUrlBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F35990671F25DACC00FC07F5 /* CYUrlBaseViewController.m */; };
+		F359906B1F25DF3300FC07F5 /* CYUrlContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F359906A1F25DF3300FC07F5 /* CYUrlContentViewController.m */; };
 		F37EBF5E1D81ACF7001CEED1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F37EBF5D1D81ACF7001CEED1 /* main.m */; };
 		F37EBF611D81ACF7001CEED1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F37EBF601D81ACF7001CEED1 /* AppDelegate.m */; };
 		F37EBF641D81ACF7001CEED1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F37EBF631D81ACF7001CEED1 /* ViewController.m */; };
@@ -45,6 +47,10 @@
 		F326E3151F189E10003E9D01 /* CYGToolListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYGToolListViewController.m; sourceTree = "<group>"; };
 		F326E3171F1CA1DA003E9D01 /* CYUrlAnalyseDemux.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYUrlAnalyseDemux.h; sourceTree = "<group>"; };
 		F326E3181F1CA1DA003E9D01 /* CYUrlAnalyseDemux.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYUrlAnalyseDemux.m; sourceTree = "<group>"; };
+		F35990661F25DACC00FC07F5 /* CYUrlBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYUrlBaseViewController.h; sourceTree = "<group>"; };
+		F35990671F25DACC00FC07F5 /* CYUrlBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYUrlBaseViewController.m; sourceTree = "<group>"; };
+		F35990691F25DF3300FC07F5 /* CYUrlContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYUrlContentViewController.h; sourceTree = "<group>"; };
+		F359906A1F25DF3300FC07F5 /* CYUrlContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYUrlContentViewController.m; sourceTree = "<group>"; };
 		F37EBF591D81ACF7001CEED1 /* CYGAnalyseTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CYGAnalyseTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F37EBF5D1D81ACF7001CEED1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F37EBF5F1D81ACF7001CEED1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -186,6 +192,10 @@
 				F37EBF9A1D81ADAE001CEED1 /* CYUrlAnalyzeDetailViewController.m */,
 				F326E3171F1CA1DA003E9D01 /* CYUrlAnalyseDemux.h */,
 				F326E3181F1CA1DA003E9D01 /* CYUrlAnalyseDemux.m */,
+				F35990661F25DACC00FC07F5 /* CYUrlBaseViewController.h */,
+				F35990671F25DACC00FC07F5 /* CYUrlBaseViewController.m */,
+				F35990691F25DF3300FC07F5 /* CYUrlContentViewController.h */,
+				F359906A1F25DF3300FC07F5 /* CYUrlContentViewController.m */,
 			);
 			path = UrlAnalyse;
 			sourceTree = "<group>";
@@ -328,8 +338,10 @@
 				F37EBF9E1D81ADAE001CEED1 /* CYUrlAnalyseProtocol.m in Sources */,
 				F37EBF9D1D81ADAE001CEED1 /* CYUrlAnalyseManager.m in Sources */,
 				F326E3191F1CA1DA003E9D01 /* CYUrlAnalyseDemux.m in Sources */,
+				F359906B1F25DF3300FC07F5 /* CYUrlContentViewController.m in Sources */,
 				F37EBF611D81ACF7001CEED1 /* AppDelegate.m in Sources */,
 				F37EBF5E1D81ACF7001CEED1 /* main.m in Sources */,
+				F35990681F25DACC00FC07F5 /* CYUrlBaseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -22,6 +22,7 @@ extern NSString* const CYResponseHeaderFields;
 extern NSString* const CYRequestErrorInfo;
 extern NSString* const CYResponseTime;
 extern NSString* const CYRequestUid;
+extern NSString* const CYRequestContent;
 
 @interface CYUrlAnalyseManager : NSObject
 

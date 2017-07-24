@@ -26,6 +26,7 @@ NSString* const CYResponseHeaderFields = @"CYResponseHeaderFields";
 NSString* const CYRequestErrorInfo = @"CYRequestErrorInfo";
 NSString* const CYResponseTime = @"CYResponseTime";
 NSString* const CYRequestUid = @"CYRequestUid";
+NSString* const CYRequestContent = @"CYRequestContent";
 
 @interface CYUrlAnalyseManager ()
 @property (nonatomic, strong) CMMotionManager *cmManager;

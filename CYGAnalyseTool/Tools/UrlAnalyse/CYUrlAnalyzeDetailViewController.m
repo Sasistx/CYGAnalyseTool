@@ -24,7 +24,7 @@
     
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
-    _scrollView = [[UIScrollView alloc] initWithFrame:self.view.frame];
+    _scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:_scrollView];
     
     UIBarButtonItem* item = [[UIBarButtonItem alloc] initWithTitle:@"Copy" style:UIBarButtonItemStylePlain target:self action:@selector(copyButtonClicked:)];
