@@ -21,9 +21,8 @@
     // Do any additional setup after loading the view, typically from a nib.
     UIWebView* webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:webView];
-    NSURLRequest* request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.baidu.com"]];
+    NSURLRequest* request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.apple.com/cn/"]];
     [webView loadRequest:request];
-    webView.delegate = self;
     
     UIBarButtonItem* leftItem = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(closeAnalyse:)];
     self.navigationItem.rightBarButtonItem = leftItem;
@@ -51,16 +50,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)webViewDidFinishLoad:(UIWebView *)webView {
-
-    
-}
-
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-
-    
 }
 
 - (void)buttonClicked:(UIButton *)button {

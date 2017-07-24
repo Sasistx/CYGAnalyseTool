@@ -90,10 +90,14 @@
     [[self class] removePropertyForKey:CYURLProtocolHandledKey inRequest:redirectRequest];
     
     [[self client] URLProtocol:self wasRedirectedToRequest:redirectRequest redirectResponse:response];
+    
+    [self.task cancel];
+    
+    [[self client] URLProtocol:self didFailWithError:[NSError errorWithDomain:NSCocoaErrorDomain code:NSUserCancelledError userInfo:nil]];
 }
 
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition))completionHandler {
-
+    
     NSString* string = [[NSString alloc] initWithData:self.request.HTTPBody encoding:NSUTF8StringEncoding];
     _urlInfo[CYResponseBody] = string ? : @"";
     _urlInfo[CYResponseUrl] = response.URL.absoluteString;
@@ -109,18 +113,19 @@
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
     didReceiveData:(NSData *)data {
 
-    [self.client URLProtocol:self didLoadData:data];
+    [[self client] URLProtocol:self didLoadData:data];
 }
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
 
-    if (error) {
+    if (error == nil) {
         
-        _urlInfo[CYRequestErrorInfo] = error.userInfo;
-        [self.client URLProtocol:self didFailWithError:error];
+        [[self client] URLProtocolDidFinishLoading:self];
+    } else if ( [[error domain] isEqual:NSURLErrorDomain] && ([error code] == NSURLErrorCancelled) ) {
+
     } else {
         
-        [self.client URLProtocolDidFinishLoading:self];
+        [[self client] URLProtocol:self didFailWithError:error];
     }
 }
 
@@ -131,7 +136,19 @@
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential *))completionHandler
 {
-    completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, nil);
+    if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
+    
+        NSString *host = challenge.protectionSpace.host;
+        NSLog(@"%@", host);
+        NSURLCredential *credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
+        completionHandler(NSURLSessionAuthChallengeUseCredential, credential);
+    } else if([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodClientCertificate]) {
+        
+        completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, nil);
+    } else {
+        completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, nil);
+    }
+    
 }
 
 @end

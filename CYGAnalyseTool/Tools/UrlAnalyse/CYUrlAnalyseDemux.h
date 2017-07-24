@@ -14,6 +14,18 @@
 
 - (instancetype)initWithConfiguration:(NSURLSessionConfiguration*)config;
 
-- (NSURLSessionDataTask *)dataTaskWithRequest:(NSURLRequest *)request delegate:(id<NSURLSessionDataDelegate>)delegate;
+- (NSURLSessionDataTask *)dataTaskWithRequest:(NSURLRequest *)request delegate:(id <NSURLSessionDataDelegate>)delegate;
+
+@end
+
+
+@interface CYUrlAnalyseTaskInfo : NSObject
+
+- (instancetype)initWithTask:(NSURLSessionTask *)task delegate:(id <NSURLSessionDataDelegate>) delegate;
+
+- (void)invalidate;
+
+@property (atomic, strong, readonly) NSURLSessionTask* task;
+@property (atomic, strong, readonly) id <NSURLSessionDataDelegate> delegate;
 
 @end

@@ -9,7 +9,7 @@
 #import "CYUrlAnalyseDemux.h"
 
 @interface CYUrlAnalyseDemux () <NSURLSessionDataDelegate>
-@property (nonatomic, weak) id <NSURLSessionDataDelegate> delegate;
+@property (atomic, strong) NSMutableDictionary* taskInfos;
 @end
 
 @implementation CYUrlAnalyseDemux
@@ -21,40 +21,110 @@
         
         _session = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:[NSOperationQueue mainQueue]];
         _session.sessionDescription = @"CYUrlAnalyseDemux";
+        _taskInfos = [NSMutableDictionary dictionary];
     }
     return self;
 }
 
 - (NSURLSessionDataTask *)dataTaskWithRequest:(NSURLRequest *)request delegate:(id<NSURLSessionDataDelegate>)delegate {
 
-    self.delegate = delegate;
     NSURLSessionDataTask *task = [_session dataTaskWithRequest:request];
+    CYUrlAnalyseTaskInfo* taskInfo = [[CYUrlAnalyseTaskInfo alloc] initWithTask:task delegate:delegate];
+    @synchronized (self) {
+        _taskInfos[@(task.taskIdentifier)] = taskInfo;
+    }
     return task;
 }
 
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition))completionHandler {
     
-    if ([self.delegate respondsToSelector:@selector(URLSession:dataTask:didReceiveResponse:completionHandler:)]) {
+    CYUrlAnalyseTaskInfo* taskInfo = [self taskInfoForTask:dataTask];
+    
+    if ([taskInfo.delegate respondsToSelector:@selector(URLSession:dataTask:didReceiveResponse:completionHandler:)]) {
         
-        [self.delegate URLSession:session dataTask:dataTask didReceiveResponse:response completionHandler:completionHandler];
+        [taskInfo.delegate URLSession:session dataTask:dataTask didReceiveResponse:response completionHandler:completionHandler];
     }
 }
 
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
     didReceiveData:(NSData *)data {
     
-    if ([self.delegate respondsToSelector:@selector(URLSession:dataTask:didReceiveData:)]) {
+    CYUrlAnalyseTaskInfo* taskInfo = [self taskInfoForTask:dataTask];
+    
+    if ([taskInfo.delegate respondsToSelector:@selector(URLSession:dataTask:didReceiveData:)]) {
         
-        [self.delegate URLSession:session dataTask:dataTask didReceiveData:data];
+        [taskInfo.delegate URLSession:session dataTask:dataTask didReceiveData:data];
     }
 }
 
 -(void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
     
-    if ([self.delegate respondsToSelector:@selector(URLSession:task:didCompleteWithError:)]) {
-        
-        [self.delegate URLSession:session task:task didCompleteWithError:error];
+    CYUrlAnalyseTaskInfo* taskInfo = [self taskInfoForTask:task];
+    
+    @synchronized (self) {
+    
+        [self.taskInfos removeObjectForKey:@(task.taskIdentifier)];
     }
+    
+    if ([taskInfo.delegate respondsToSelector:@selector(URLSession:task:didCompleteWithError:)]) {
+        
+        [taskInfo.delegate URLSession:session task:task didCompleteWithError:error];
+
+    }
+    
+    [taskInfo invalidate];
+}
+
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask willCacheResponse:(NSCachedURLResponse *)proposedResponse completionHandler:(void (^)(NSCachedURLResponse *))completionHandler
+{
+    CYUrlAnalyseTaskInfo* taskInfo = [self taskInfoForTask:dataTask];
+    
+    if ([taskInfo.delegate respondsToSelector:@selector(URLSession:dataTask:willCacheResponse:completionHandler:)]) {
+        
+        [taskInfo.delegate URLSession:session dataTask:dataTask willCacheResponse:proposedResponse completionHandler:completionHandler];
+    }
+    completionHandler(proposedResponse);
+}
+
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential *))completionHandler
+{
+    CYUrlAnalyseTaskInfo* taskInfo = [self taskInfoForTask:task];
+    
+    if ([taskInfo.delegate respondsToSelector:@selector(URLSession:task:didReceiveChallenge:completionHandler:)]) {
+        
+        [taskInfo.delegate URLSession:session task:task didReceiveChallenge:challenge completionHandler:completionHandler];
+    }
+}
+
+- (CYUrlAnalyseTaskInfo *)taskInfoForTask:(NSURLSessionTask *)task {
+
+    CYUrlAnalyseTaskInfo * taskInfo;
+    @synchronized (self) {
+        
+        taskInfo = _taskInfos[@(task.taskIdentifier)];
+    }
+    
+    return taskInfo;
+}
+
+@end
+
+@implementation CYUrlAnalyseTaskInfo
+
+- (instancetype)initWithTask:(NSURLSessionTask *)task delegate:(id <NSURLSessionDataDelegate>) delegate {
+    
+    self = [super init];
+    if (self) {
+        
+        _delegate = delegate;
+        _task = task;
+    }
+    return self;
+}
+
+- (void)invalidate {
+
+    _delegate = nil;
 }
 
 @end
