@@ -42,12 +42,14 @@
 - (void)showUrlInfo
 {
     NSMutableString* requestString = [[NSMutableString alloc] initWithString:@"Request:\n\n"];
-    [requestString appendFormat:@"Url: %@\n\n", _urlInfo[CYRequestUrl]];
-    [requestString appendFormat:@"Body: %@\n\n", _urlInfo[CYRequestBody]];
+    [requestString appendFormat:@"Url: %@\n\n", _urlModel.requestUrl];
+    [requestString appendFormat:@"header size: %f kb\n", _urlModel.requestHeaderLength];
+    [requestString appendFormat:@"body size: %f kb\n\n", _urlModel.requestBodyLength];
+    [requestString appendFormat:@"Body: %@\n\n", _urlModel.requestBody];
     [requestString appendFormat:@"HeaderField:\n"];
-    if ([_urlInfo[CYRequestHeaderFields] isKindOfClass:[NSDictionary class]]) {
+    if ([_urlModel.requestHeaderFields isKindOfClass:[NSDictionary class]]) {
         
-        NSDictionary* headerFields = _urlInfo[CYRequestHeaderFields];
+        NSDictionary* headerFields = _urlModel.requestHeaderFields;
         __block NSMutableString* requestFieldString = [[NSMutableString alloc] init];
         [headerFields enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
            
@@ -73,10 +75,10 @@
  
     NSMutableString* errorString = [[NSMutableString alloc] init];
     
-    if ([_urlInfo[CYRequestErrorInfo] isKindOfClass:[NSDictionary class]]) {
+    if ([_urlModel.errorInfo isKindOfClass:[NSDictionary class]]) {
         
         [errorString appendString:@"\n\nError:\n\n"];
-        NSDictionary* errorInfo = _urlInfo[CYRequestErrorInfo];
+        NSDictionary* errorInfo = _urlModel.errorInfo;
         [errorString appendFormat:@"Url: %@\n\n", errorInfo[NSURLErrorFailingURLStringErrorKey]];
         [errorString appendFormat:@"Decription: %@\n\n", errorInfo[NSLocalizedDescriptionKey]];
         [errorString appendFormat:@"Other: %@\n\n", errorInfo[NSUnderlyingErrorKey]];
@@ -96,15 +98,17 @@
     [_scrollView addSubview:responseLabel];
     NSMutableString* responseString = [[NSMutableString alloc] init];
     [responseString appendString:@"\n\nResponse:\n\n"];
-    [responseString appendFormat:@"response time:%0.4fs\n\n", [_urlInfo[CYResponseTime] floatValue]];
-    [responseString appendFormat:@"Method:%@  StatusCode:%@\n\n", _urlInfo[CYHttpMethod], _urlInfo[CYURLStatusCode]];
-    [responseString appendFormat:@"MIME type: %@\n\n", _urlInfo[CYMIMEType]];
-    [responseString appendFormat:@"Url: %@\n\n", _urlInfo[CYResponseUrl]];
-    [responseString appendFormat:@"Body: %@\n\n", _urlInfo[CYResponseBody]];
+    [responseString appendFormat:@"response time:%0.4fs\n\n", _urlModel.responseTime];
+    [responseString appendFormat:@"Method:%@  StatusCode:%ld\n\n", _urlModel.httpMethod, (long)_urlModel.statusCode];
+    [responseString appendFormat:@"header size: %f kb\n", _urlModel.responseHeaderLength];
+    [responseString appendFormat:@"body size: %f kb\n\n", _urlModel.responseBodyLength];
+    [responseString appendFormat:@"MIME type: %@\n\n", _urlModel.mimeType];
+    [responseString appendFormat:@"Url: %@\n\n", _urlModel.responseUrl];
+    [responseString appendFormat:@"Body: %@\n\n", _urlModel.responseBody];
     [responseString appendFormat:@"HeaderFields:\n\n"];
-    if ([_urlInfo[CYResponseHeaderFields] isKindOfClass:[NSDictionary class]]) {
+    if ([_urlModel.responseHeaderFields isKindOfClass:[NSDictionary class]]) {
         
-        NSDictionary* headerFields = _urlInfo[CYResponseHeaderFields];
+        NSDictionary* headerFields = _urlModel.responseHeaderFields;
         __block NSMutableString* responseFieldString = [[NSMutableString alloc] init];
         [headerFields enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
             

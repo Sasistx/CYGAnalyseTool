@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CYUrlAnalyseDemux : UIView
+@interface CYUrlAnalyseDemux : NSObject
 
 @property (atomic, strong, readonly) NSURLSession* session;
 

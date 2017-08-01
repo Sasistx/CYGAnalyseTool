@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CYUrlAnalyseManager.h"
 
 @interface CYUrlAnalyseListCell : UITableViewCell
 
 @property (nonatomic, strong) UILabel* urlLabel;
 @property (nonatomic, strong) UILabel* methodLabel;
 @property (nonatomic, strong) UILabel* statusLabel;
-@property (nonatomic, strong) id listInfo;
 
-- (void)updateListInfo:(NSDictionary*)listInfo;
+- (void)updateListInfo:(CYUrlAnalyseModel *)urlModel;
 
 @end

@@ -14,19 +14,6 @@
 
 NSString* const CYUrlAnalyseChangeKey = @"CYUrlAnalyseChangeKey";
 NSString* const CYURLProtocolHandledKey = @"CYURLProtocolHandledKey";
-NSString* const CYURLStatusCode = @"CYURLStatusCode";
-NSString* const CYMIMEType = @"CYMIMEType";
-NSString* const CYHttpMethod = @"CYHttpMethod";
-NSString* const CYRequestUrl = @"CYRequestUrl";
-NSString* const CYRequestHeaderFields = @"CYRequestHeaderFields";
-NSString* const CYRequestBody = @"CYRequestBody";
-NSString* const CYResponseBody = @"CYResponseBody";
-NSString* const CYResponseUrl = @"CYResponseUrl";
-NSString* const CYResponseHeaderFields = @"CYResponseHeaderFields";
-NSString* const CYRequestErrorInfo = @"CYRequestErrorInfo";
-NSString* const CYResponseTime = @"CYResponseTime";
-NSString* const CYRequestUid = @"CYRequestUid";
-NSString* const CYRequestContent = @"CYRequestContent";
 
 @interface CYUrlAnalyseManager ()
 @property (nonatomic, strong) CMMotionManager *cmManager;
@@ -58,17 +45,19 @@ static CYUrlAnalyseManager* defaultManager = nil;
         
         _enableOverlay = YES;
         _enableUrlAnalyse = YES;
+        
+        _networkFlow = [[CYNetworkFlow alloc] init];
     }
     return self;
 }
 
-- (void)addObjectToUrlArray:(NSDictionary*)infoDict
+- (void)addObjectToUrlArray:(CYUrlAnalyseModel *)urlModel
 {
     if (_urlArray.count > 30) {
         
         [_urlArray removeObjectAtIndex:29];
     }
-    [_urlArray insertObject:infoDict atIndex:0];
+    [_urlArray insertObject:urlModel atIndex:0];
     [[NSNotificationCenter defaultCenter] postNotificationName:CYUrlAnalyseChangeKey object:nil userInfo:nil];
 }
 

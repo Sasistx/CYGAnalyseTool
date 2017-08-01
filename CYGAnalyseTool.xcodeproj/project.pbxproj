@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F30C239D1F306067007DD4F2 /* CYUrlAnalyseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F30C239C1F306067007DD4F2 /* CYUrlAnalyseModel.m */; };
 		F326E3161F189E10003E9D01 /* CYGToolListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F326E3151F189E10003E9D01 /* CYGToolListViewController.m */; };
 		F326E3191F1CA1DA003E9D01 /* CYUrlAnalyseDemux.m in Sources */ = {isa = PBXBuildFile; fileRef = F326E3181F1CA1DA003E9D01 /* CYUrlAnalyseDemux.m */; };
 		F35990681F25DACC00FC07F5 /* CYUrlBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F35990671F25DACC00FC07F5 /* CYUrlBaseViewController.m */; };
@@ -23,6 +24,7 @@
 		F37EBF9D1D81ADAE001CEED1 /* CYUrlAnalyseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F37EBF961D81ADAE001CEED1 /* CYUrlAnalyseManager.m */; };
 		F37EBF9E1D81ADAE001CEED1 /* CYUrlAnalyseProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = F37EBF981D81ADAE001CEED1 /* CYUrlAnalyseProtocol.m */; };
 		F37EBF9F1D81ADAE001CEED1 /* CYUrlAnalyzeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F37EBF9A1D81ADAE001CEED1 /* CYUrlAnalyzeDetailViewController.m */; };
+		F3E0C9161F2B199C00CD3749 /* CYNetworkFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = F3E0C9151F2B199C00CD3749 /* CYNetworkFlow.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F30C239B1F306067007DD4F2 /* CYUrlAnalyseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYUrlAnalyseModel.h; sourceTree = "<group>"; };
+		F30C239C1F306067007DD4F2 /* CYUrlAnalyseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYUrlAnalyseModel.m; sourceTree = "<group>"; };
 		F326E3141F189E10003E9D01 /* CYGToolListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYGToolListViewController.h; sourceTree = "<group>"; };
 		F326E3151F189E10003E9D01 /* CYGToolListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYGToolListViewController.m; sourceTree = "<group>"; };
 		F326E3171F1CA1DA003E9D01 /* CYUrlAnalyseDemux.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYUrlAnalyseDemux.h; sourceTree = "<group>"; };
@@ -77,6 +81,8 @@
 		F37EBF991D81ADAE001CEED1 /* CYUrlAnalyzeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYUrlAnalyzeDetailViewController.h; sourceTree = "<group>"; };
 		F37EBF9A1D81ADAE001CEED1 /* CYUrlAnalyzeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYUrlAnalyzeDetailViewController.m; sourceTree = "<group>"; };
 		F37EBFA01D81AF4B001CEED1 /* CYGToolDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYGToolDefines.h; sourceTree = "<group>"; };
+		F3E0C9141F2B199C00CD3749 /* CYNetworkFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYNetworkFlow.h; sourceTree = "<group>"; };
+		F3E0C9151F2B199C00CD3749 /* CYNetworkFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYNetworkFlow.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +202,10 @@
 				F35990671F25DACC00FC07F5 /* CYUrlBaseViewController.m */,
 				F35990691F25DF3300FC07F5 /* CYUrlContentViewController.h */,
 				F359906A1F25DF3300FC07F5 /* CYUrlContentViewController.m */,
+				F3E0C9141F2B199C00CD3749 /* CYNetworkFlow.h */,
+				F3E0C9151F2B199C00CD3749 /* CYNetworkFlow.m */,
+				F30C239B1F306067007DD4F2 /* CYUrlAnalyseModel.h */,
+				F30C239C1F306067007DD4F2 /* CYUrlAnalyseModel.m */,
 			);
 			path = UrlAnalyse;
 			sourceTree = "<group>";
@@ -335,12 +345,14 @@
 				F37EBF9F1D81ADAE001CEED1 /* CYUrlAnalyzeDetailViewController.m in Sources */,
 				F37EBF9C1D81ADAE001CEED1 /* CYUrlAnalyseListViewController.m in Sources */,
 				F326E3161F189E10003E9D01 /* CYGToolListViewController.m in Sources */,
+				F30C239D1F306067007DD4F2 /* CYUrlAnalyseModel.m in Sources */,
 				F37EBF9E1D81ADAE001CEED1 /* CYUrlAnalyseProtocol.m in Sources */,
 				F37EBF9D1D81ADAE001CEED1 /* CYUrlAnalyseManager.m in Sources */,
 				F326E3191F1CA1DA003E9D01 /* CYUrlAnalyseDemux.m in Sources */,
 				F359906B1F25DF3300FC07F5 /* CYUrlContentViewController.m in Sources */,
 				F37EBF611D81ACF7001CEED1 /* AppDelegate.m in Sources */,
 				F37EBF5E1D81ACF7001CEED1 /* main.m in Sources */,
+				F3E0C9161F2B199C00CD3749 /* CYNetworkFlow.m in Sources */,
 				F35990681F25DACC00FC07F5 /* CYUrlBaseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

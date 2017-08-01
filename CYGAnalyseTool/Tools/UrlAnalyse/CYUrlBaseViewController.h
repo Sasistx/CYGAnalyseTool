@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CYUrlAnalyseModel.h"
 
 @interface CYUrlBaseViewController : UIViewController
-@property (nonatomic, strong) NSDictionary* urlInfo;
+@property (nonatomic, strong) CYUrlAnalyseModel* urlModel;
 @end

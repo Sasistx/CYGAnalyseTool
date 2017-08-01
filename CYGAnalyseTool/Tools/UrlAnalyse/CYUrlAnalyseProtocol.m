@@ -9,10 +9,11 @@
 #import "CYUrlAnalyseProtocol.h"
 #import "CYUrlAnalyseManager.h"
 #import "CYUrlAnalyseDemux.h"
+#import "CYUrlAnalyseModel.h"
 
 @interface CYUrlAnalyseProtocol() <NSURLSessionDataDelegate>
 @property (nonatomic, strong) NSDate* startDate;
-@property (nonatomic, strong) NSMutableDictionary* urlInfo;
+@property (nonatomic, strong) CYUrlAnalyseModel* urlModel;
 @property (nonatomic, strong) NSMutableData* data;
 @end
 
@@ -45,8 +46,8 @@
 - (void)startLoading
 {
     _startDate = [NSDate date];
-    _urlInfo = [NSMutableDictionary dictionary];
-    _urlInfo[CYRequestUid] = [NSUUID UUID].UUIDString;
+    _urlModel = [[CYUrlAnalyseModel alloc] init];
+    _urlModel.requestUid = [NSUUID UUID].UUIDString;
     _data = [NSMutableData data];
     NSMutableURLRequest *mutableReqeust = [[self request] mutableCopy];
     [[self class] setProperty:@YES forKey:CYURLProtocolHandledKey inRequest:mutableReqeust];
@@ -59,12 +60,19 @@
 {
     NSTimeInterval divTime = [[NSDate date] timeIntervalSinceDate:_startDate];
     NSString* requestBody = [[NSString alloc] initWithData:self.request.HTTPBody encoding:NSUTF8StringEncoding];
-    _urlInfo[CYResponseTime] = @(divTime);
-    _urlInfo[CYRequestUrl] = self.request.URL.absoluteString;
-    _urlInfo[CYRequestBody] = requestBody ? : @"";
-    _urlInfo[CYRequestHeaderFields] = self.request.allHTTPHeaderFields;
-    _urlInfo[CYHttpMethod] = self.request.HTTPMethod;
-    [[CYUrlAnalyseManager defaultManager] addObjectToUrlArray:_urlInfo];
+    
+    _urlModel.responseTime = divTime;
+    _urlModel.requestUrl = self.request.URL.absoluteString.stringByRemovingPercentEncoding;
+    _urlModel.requestBody = requestBody.stringByRemovingPercentEncoding ? : @"";
+    _urlModel.requestHeaderFields = self.request.allHTTPHeaderFields;
+    _urlModel.requestBodyLength = self.request.HTTPBody.length / 1024.0;
+    _urlModel.httpMethod = self.request.HTTPMethod;
+    if (_urlModel.requestHeaderFields) {
+        NSData* data = [NSJSONSerialization dataWithJSONObject:_urlModel.requestHeaderFields options:NSJSONWritingPrettyPrinted error:nil];
+        _urlModel.requestHeaderLength = data.length / 1024.0;
+    }
+    
+    [[CYUrlAnalyseManager defaultManager] addObjectToUrlArray:_urlModel];
     if (self.task != nil) {
         
         [self.task cancel];
@@ -102,12 +110,20 @@
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition))completionHandler {
     
     NSString* string = [[NSString alloc] initWithData:self.request.HTTPBody encoding:NSUTF8StringEncoding];
-    _urlInfo[CYResponseBody] = string ? : @"";
-    _urlInfo[CYResponseUrl] = response.URL.absoluteString;
-    _urlInfo[CYMIMEType] = response.MIMEType;
+    _urlModel.responseBody = string.stringByRemovingPercentEncoding ? : @"";
+    _urlModel.responseUrl = response.URL.absoluteString;
+    _urlModel.mimeType = response.MIMEType;
+    
     if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
-        _urlInfo[CYResponseHeaderFields] = ((NSHTTPURLResponse*)response).allHeaderFields;
-        _urlInfo[CYURLStatusCode] = @(((NSHTTPURLResponse*)response).statusCode);
+        
+        _urlModel.responseHeaderFields = ((NSHTTPURLResponse*)response).allHeaderFields;
+        if (_urlModel.responseHeaderFields) {
+            
+            NSData* data = [NSJSONSerialization dataWithJSONObject:_urlModel.responseHeaderFields options:NSJSONWritingPrettyPrinted error:nil];
+            _urlModel.responseHeaderLength = data.length / 1024.0;
+        }
+        
+        _urlModel.statusCode = ((NSHTTPURLResponse*)response).statusCode;
     }
     [self.client URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageNotAllowed];
     completionHandler(NSURLSessionResponseAllow);
@@ -126,6 +142,7 @@
         
         if (_data) {
             
+            _urlModel.responseBodyLength = _data.length / 1024.0;
             NSError* error = nil;
             id jsonObject = [NSJSONSerialization JSONObjectWithData:_data options:NSJSONReadingMutableContainers error:&error];
             
@@ -136,7 +153,7 @@
                 if (!jsonError && jsonData) {
                     
                     NSString* jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-                    _urlInfo[CYRequestContent] = jsonString;
+                    _urlModel.responseContent = jsonString;
                 }
             }
         }
@@ -146,6 +163,7 @@
         
     } else {
         
+        _urlModel.errorInfo = error.userInfo;
         [[self client] URLProtocol:self didFailWithError:error];
     }
     _data = nil;
@@ -168,7 +186,6 @@
     } else {
         completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, nil);
     }
-    
 }
 
 @end

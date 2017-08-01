@@ -7,33 +7,24 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CYNetworkFlow.h"
+#import "CYUrlAnalyseModel.h"
 
 extern NSString* const CYUrlAnalyseChangeKey;
 extern NSString* const CYURLProtocolHandledKey;
-extern NSString* const CYURLStatusCode;
-extern NSString* const CYMIMEType;
-extern NSString* const CYHttpMethod;
-extern NSString* const CYRequestUrl;
-extern NSString* const CYRequestHeaderFields;
-extern NSString* const CYRequestBody;
-extern NSString* const CYResponseBody;
-extern NSString* const CYResponseUrl;
-extern NSString* const CYResponseHeaderFields;
-extern NSString* const CYRequestErrorInfo;
-extern NSString* const CYResponseTime;
-extern NSString* const CYRequestUid;
-extern NSString* const CYRequestContent;
 
 @interface CYUrlAnalyseManager : NSObject
 
-@property (nonatomic, strong, readonly) NSMutableArray* urlArray;
+@property (nonatomic, strong, readonly) NSMutableArray <CYUrlAnalyseModel *>* urlArray;
 
 @property (nonatomic, getter=isEnableUrlAnalyse) BOOL enableUrlAnalyse; //default is YES
 @property (nonatomic, getter=isEnableOverlay) BOOL enableOverlay; //default is YES
 
-+ (CYUrlAnalyseManager*)defaultManager;
+@property (nonatomic, strong) CYNetworkFlow* networkFlow;
 
-- (void)addObjectToUrlArray:(NSDictionary*)infoDict;
++ (CYUrlAnalyseManager *)defaultManager;
+
+- (void)addObjectToUrlArray:(CYUrlAnalyseModel *)urlModel;
 
 - (void)cleanAllObejct;
 

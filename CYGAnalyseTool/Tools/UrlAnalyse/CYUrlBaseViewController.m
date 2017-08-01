@@ -28,13 +28,13 @@
     
     _segControllers = [NSMutableArray array];
     CYUrlAnalyzeDetailViewController* detailController = [[CYUrlAnalyzeDetailViewController alloc] init];
-    detailController.urlInfo = _urlInfo;
+    detailController.urlModel = _urlModel;
     [self.view addSubview:detailController.view];
     [self addChildViewController:detailController];
     [_segControllers addObject:detailController];
     
     CYUrlContentViewController* contentController = [[CYUrlContentViewController alloc] init];
-    contentController.urlInfo = _urlInfo;
+    contentController.urlModel = _urlModel;
     [self.view addSubview:contentController.view];
     [self addChildViewController:contentController];
     [_segControllers addObject:contentController];
@@ -65,7 +65,7 @@
 
 - (void)copyButtonClicked:(id)sender
 {
-    __block NSString* urlString = _urlInfo[CYRequestUrl] ? : @"";
+    __block NSString* urlString = _urlModel.requestUrl;
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:@"Select" preferredStyle:UIAlertControllerStyleActionSheet];
     
     UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"cancel"
@@ -73,7 +73,7 @@
                                                     handler:^(UIAlertAction *action) {
                                                         
                                                     }];
-    UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"url"
+    UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"request url"
                                                       style:UIAlertActionStyleDefault
                                                     handler:^(UIAlertAction *action) {
                                                         

@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "CYGToolDefines.h"
+#import "CYUrlAnalyseModel.h"
 
 @interface CYUrlAnalyzeDetailViewController : UIViewController
-@property (nonatomic, strong) NSDictionary* urlInfo;
+@property (nonatomic, strong) CYUrlAnalyseModel* urlModel;
 @end

@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "CYUrlAnalyseProtocol.h"
 #import "CYUrlAnalyseManager.h"
+#import "CYUrlAnalyseListViewController.h"
 
 @interface ViewController () <NSURLSessionDelegate, UIWebViewDelegate>
 
@@ -27,9 +28,14 @@
     UIBarButtonItem* leftItem = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(closeAnalyse:)];
     self.navigationItem.rightBarButtonItem = leftItem;
     
-    UIBarButtonItem* rightItem = [[UIBarButtonItem alloc] initWithTitle:@"Open" style:UIBarButtonItemStylePlain target:self action:@selector(openAnalyse:)];
+    UIBarButtonItem* rightItem = [[UIBarButtonItem alloc] initWithTitle:@"network" style:UIBarButtonItemStylePlain target:self action:@selector(openAnalyse:)];
     self.navigationItem.leftBarButtonItem = rightItem;
     
+    
+    [[CYUrlAnalyseManager defaultManager].networkFlow startblock:^(u_int32_t sendFlow, u_int32_t receivedFlow) {
+       
+        
+    }];
 //    NSURLSessionConfiguration* config = [NSURLSessionConfiguration defaultSessionConfiguration];
 //    config.protocolClasses = @[self];
 //    NSURLSession* session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue:[NSOperationQueue mainQueue]];
@@ -44,7 +50,20 @@
 
 - (void)openAnalyse:(id)sender {
 
-    [[CYUrlAnalyseManager defaultManager] registAnalyse];
+    CYNetworkFlow* networkFlow = [CYUrlAnalyseManager defaultManager].networkFlow;
+    NSLog(@"--up--%@", [networkFlow getUpFlow]);
+    NSLog(@"--down--%@", [networkFlow getDownFlow]);
+    NSLog(@"--wifi-send--%u", networkFlow.kWiFiSent);
+    NSLog(@"--wifi-receive--%u", networkFlow.kWiFiReceived);
+    NSLog(@"--wwan-send--%u", networkFlow.kWWANSent);
+    NSLog(@"--wwan-receive--%u", networkFlow.kWWANReceived);
+    
+    CYUrlAnalyseListViewController* controller = [[CYUrlAnalyseListViewController alloc] init];
+    UINavigationController* navi = [[UINavigationController alloc] initWithRootViewController:controller];
+    UIViewController* currentController = [UIApplication sharedApplication].keyWindow.rootViewController;
+    [currentController presentViewController:navi animated:YES completion:Nil];
+    
+    //[[CYUrlAnalyseManager defaultManager] registAnalyse];
 }
 
 - (void)didReceiveMemoryWarning {

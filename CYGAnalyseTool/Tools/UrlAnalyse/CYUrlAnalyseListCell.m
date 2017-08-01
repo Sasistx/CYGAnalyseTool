@@ -7,7 +7,6 @@
 //
 
 #import "CYUrlAnalyseListCell.h"
-#import "CYUrlAnalyseManager.h"
 
 @interface CYUrlAnalyseListCell ()
 
@@ -39,26 +38,27 @@
 
 - (void)createCellView
 {
-    _urlLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 10, [UIScreen mainScreen].bounds.size.width - 30, 20)];
+    _urlLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 10, [UIScreen mainScreen].bounds.size.width - 30, 45)];
+    _urlLabel.numberOfLines = 2;
     [self.contentView addSubview:_urlLabel];
     
-    _methodLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 40, 120, 20)];
+    _methodLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 65, 120, 20)];
     [self.contentView addSubview:_methodLabel];
     
-    _statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(130, 40, 120, 20)];
+    _statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(130, 65, 120, 20)];
     [self.contentView addSubview:_statusLabel];
 }
 
-- (void)updateListInfo:(NSDictionary*)listInfo
+- (void)updateListInfo:(CYUrlAnalyseModel *)urlModel
 {
-    _urlLabel.text = [NSString stringWithFormat:@"URL: %@", listInfo[CYRequestUrl]];
-    _methodLabel.text = [NSString stringWithFormat:@"Method: %@", listInfo[CYHttpMethod]];
+    _urlLabel.text = [NSString stringWithFormat:@"URL: %@", urlModel.requestUrl];
+    _methodLabel.text = [NSString stringWithFormat:@"Method: %@", urlModel.httpMethod];
     
-    NSMutableAttributedString* attrString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Status: %@", listInfo[CYURLStatusCode]]];
+    NSMutableAttributedString* attrString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Status: %ld", (long)urlModel.statusCode]];
     
     [attrString setAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]} range:NSMakeRange(0, 8)];
     
-    NSInteger code = [listInfo[CYURLStatusCode] integerValue];
+    NSInteger code = urlModel.statusCode;
     
     
     if (code >= 200 && code < 300) {

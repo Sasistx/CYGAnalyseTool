@@ -82,7 +82,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 70;
+    return 95;
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -94,8 +94,8 @@
         cell = [[CYUrlAnalyseListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
     }
     
-    NSDictionary* urlInfo = [CYUrlAnalyseManager defaultManager].urlArray[indexPath.row];
-    [cell updateListInfo:urlInfo];
+    CYUrlAnalyseModel* urlModel = [CYUrlAnalyseManager defaultManager].urlArray[indexPath.row];
+    [cell updateListInfo:urlModel];
     
     return cell;
 }
@@ -104,7 +104,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     CYUrlBaseViewController* controller = [[CYUrlBaseViewController alloc] init];
-    controller.urlInfo = [CYUrlAnalyseManager defaultManager].urlArray[indexPath.row];
+    controller.urlModel = [CYUrlAnalyseManager defaultManager].urlArray[indexPath.row];
     [self.navigationController pushViewController:controller animated:YES];
 }
 
