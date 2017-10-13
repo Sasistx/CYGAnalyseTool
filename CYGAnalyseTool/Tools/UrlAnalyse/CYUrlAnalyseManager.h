@@ -40,4 +40,6 @@ extern NSString* const CYURLProtocolHandledKey;
  */
 - (void)logoutAnalyse;
 
+- (void)writeUrlDataToPlistWithfinishBlock:(void (^)(BOOL success))finishBlock;
+
 @end

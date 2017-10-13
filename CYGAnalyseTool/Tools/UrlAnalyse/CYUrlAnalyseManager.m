@@ -10,6 +10,7 @@
 #import "CYUrlAnalyseListViewController.h"
 #import "CYUrlAnalyseProtocol.h"
 #import "CYGToolDefines.h"
+#import "CYUrlArchiveManager.h"
 #import <CoreMotion/CoreMotion.h>
 
 NSString* const CYUrlAnalyseChangeKey = @"CYUrlAnalyseChangeKey";
@@ -17,6 +18,7 @@ NSString* const CYURLProtocolHandledKey = @"CYURLProtocolHandledKey";
 
 @interface CYUrlAnalyseManager ()
 @property (nonatomic, strong) CMMotionManager *cmManager;
+@property (nonatomic, strong) CYUrlArchiveManager* archiveManager;
 @property (nonatomic, weak) UIViewController* urlController;
 @property (nonatomic, weak) UIButton* overlayBtn;
 @end
@@ -47,6 +49,7 @@ static CYUrlAnalyseManager* defaultManager = nil;
         _enableUrlAnalyse = YES;
         
         _networkFlow = [[CYNetworkFlow alloc] init];
+        _archiveManager = [[CYUrlArchiveManager alloc] init];
     }
     return self;
 }
@@ -126,6 +129,11 @@ static CYUrlAnalyseManager* defaultManager = nil;
     UIViewController* currentController = [UIApplication sharedApplication].keyWindow.rootViewController;
     [currentController presentViewController:navi animated:YES completion:Nil];
     _urlController = controller;
+}
+
+- (void)writeUrlDataToPlistWithfinishBlock:(void (^)(BOOL success))finishBlock {
+
+    [_archiveManager archivePlistWithDataArray:_urlArray finishBlock:finishBlock];
 }
 
 @end

@@ -24,6 +24,7 @@
 		F37EBF9D1D81ADAE001CEED1 /* CYUrlAnalyseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F37EBF961D81ADAE001CEED1 /* CYUrlAnalyseManager.m */; };
 		F37EBF9E1D81ADAE001CEED1 /* CYUrlAnalyseProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = F37EBF981D81ADAE001CEED1 /* CYUrlAnalyseProtocol.m */; };
 		F37EBF9F1D81ADAE001CEED1 /* CYUrlAnalyzeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F37EBF9A1D81ADAE001CEED1 /* CYUrlAnalyzeDetailViewController.m */; };
+		F3A01B4C1F4EBFEF004DAC31 /* CYUrlArchiveManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F3A01B4B1F4EBFEF004DAC31 /* CYUrlArchiveManager.m */; };
 		F3E0C9161F2B199C00CD3749 /* CYNetworkFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = F3E0C9151F2B199C00CD3749 /* CYNetworkFlow.m */; };
 /* End PBXBuildFile section */
 
@@ -81,6 +82,8 @@
 		F37EBF991D81ADAE001CEED1 /* CYUrlAnalyzeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYUrlAnalyzeDetailViewController.h; sourceTree = "<group>"; };
 		F37EBF9A1D81ADAE001CEED1 /* CYUrlAnalyzeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYUrlAnalyzeDetailViewController.m; sourceTree = "<group>"; };
 		F37EBFA01D81AF4B001CEED1 /* CYGToolDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYGToolDefines.h; sourceTree = "<group>"; };
+		F3A01B4A1F4EBFEF004DAC31 /* CYUrlArchiveManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYUrlArchiveManager.h; sourceTree = "<group>"; };
+		F3A01B4B1F4EBFEF004DAC31 /* CYUrlArchiveManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYUrlArchiveManager.m; sourceTree = "<group>"; };
 		F3E0C9141F2B199C00CD3749 /* CYNetworkFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYNetworkFlow.h; sourceTree = "<group>"; };
 		F3E0C9151F2B199C00CD3749 /* CYNetworkFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYNetworkFlow.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -206,6 +209,8 @@
 				F3E0C9151F2B199C00CD3749 /* CYNetworkFlow.m */,
 				F30C239B1F306067007DD4F2 /* CYUrlAnalyseModel.h */,
 				F30C239C1F306067007DD4F2 /* CYUrlAnalyseModel.m */,
+				F3A01B4A1F4EBFEF004DAC31 /* CYUrlArchiveManager.h */,
+				F3A01B4B1F4EBFEF004DAC31 /* CYUrlArchiveManager.m */,
 			);
 			path = UrlAnalyse;
 			sourceTree = "<group>";
@@ -272,7 +277,7 @@
 		F37EBF511D81ACF7001CEED1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = CYGTX;
 				TargetAttributes = {
 					F37EBF581D81ACF7001CEED1 = {
@@ -345,6 +350,7 @@
 				F37EBF9F1D81ADAE001CEED1 /* CYUrlAnalyzeDetailViewController.m in Sources */,
 				F37EBF9C1D81ADAE001CEED1 /* CYUrlAnalyseListViewController.m in Sources */,
 				F326E3161F189E10003E9D01 /* CYGToolListViewController.m in Sources */,
+				F3A01B4C1F4EBFEF004DAC31 /* CYUrlArchiveManager.m in Sources */,
 				F30C239D1F306067007DD4F2 /* CYUrlAnalyseModel.m in Sources */,
 				F37EBF9E1D81ADAE001CEED1 /* CYUrlAnalyseProtocol.m in Sources */,
 				F37EBF9D1D81ADAE001CEED1 /* CYUrlAnalyseManager.m in Sources */,
@@ -409,14 +415,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -455,14 +467,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

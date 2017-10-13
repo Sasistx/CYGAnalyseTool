@@ -8,26 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-//NSString* const CYUrlAnalyseChangeKey = @"CYUrlAnalyseChangeKey";
-//NSString* const CYURLProtocolHandledKey = @"CYURLProtocolHandledKey";
-//NSString* const CYURLStatusCode = @"CYURLStatusCode";
-//NSString* const CYMIMEType = @"CYMIMEType";
-//NSString* const CYHttpMethod = @"CYHttpMethod";
-//NSString* const CYRequestUrl = @"CYRequestUrl";
-//NSString* const CYRequestHeaderFields = @"CYRequestHeaderFields";
-//NSString* const CYRequestBody = @"CYRequestBody";
-//NSString* const CYResponseBody = @"CYResponseBody";
-//NSString* const CYResponseUrl = @"CYResponseUrl";
-//NSString* const CYResponseHeaderFields = @"CYResponseHeaderFields";
-//NSString* const CYRequestErrorInfo = @"CYRequestErrorInfo";
-//NSString* const CYResponseTime = @"CYResponseTime";
-//NSString* const CYRequestUid = @"CYRequestUid";
-//NSString* const CYRequestContent = @"CYRequestContent";
-//NSString* const CYRequestHeaderLength = @"CYRequestHeaderLength";
-//NSString* const CYRequestBodyLength = @"CYRequestBodyLength";
-//NSString* const CYResponseHeaderLength = @"CYResponseHeaderLength";
-//NSString* const CYResponseBodyLength = @"CYResponseBodyLength";
-
 @interface CYUrlAnalyseModel : NSObject
 
 @property (nonatomic) NSInteger statusCode;
@@ -49,5 +29,7 @@
 @property (nonatomic) NSTimeInterval responseTime;
 @property (nonatomic) double responseHeaderLength;  //kb
 @property (nonatomic) double responseBodyLength;    //kb
+
+- (NSDictionary *)transformToDictionary;
 
 @end

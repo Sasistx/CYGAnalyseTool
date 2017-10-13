@@ -26,13 +26,14 @@
     self.title = @"Analyse List";
     
     UIBarButtonItem* leftItem = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(closeCurrentView:)];
-    self.navigationItem.rightBarButtonItem = leftItem;
+    self.navigationItem.leftBarButtonItem = leftItem;
     
     if ([CYUrlAnalyseManager defaultManager].isEnableUrlAnalyse) {
         
         _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
+        _tableView.estimatedRowHeight = 0;
         [self.view addSubview:_tableView];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(urlAnalyseChanged:) name:CYUrlAnalyseChangeKey object:nil];
@@ -40,8 +41,8 @@
     
     if ([CYUrlAnalyseManager defaultManager].isEnableOverlay) {
         
-        UIBarButtonItem* rightItem = [[UIBarButtonItem alloc] initWithTitle:@"overLay" style:UIBarButtonItemStylePlain target:self action:@selector(showOverlay:)];
-        self.navigationItem.leftBarButtonItem = rightItem;
+        UIBarButtonItem* rightItem = [[UIBarButtonItem alloc] initWithTitle:@"more" style:UIBarButtonItemStylePlain target:self action:@selector(moreItem:)];
+        self.navigationItem.rightBarButtonItem = rightItem;
     }
 }
 
@@ -55,18 +56,56 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)showOverlay:(id)sender {
+- (void)moreItem:(id)sender {
 
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:Nil];
-    [[CYUrlAnalyseManager defaultManager] cleanUrlController];
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    @weakify(self);
+    UIAlertAction* overlayAction = [UIAlertAction actionWithTitle:@"overlay" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        @strongify(self);
+        [self.presentingViewController dismissViewControllerAnimated:YES completion:Nil];
+        [[CYUrlAnalyseManager defaultManager] cleanUrlController];
 #ifdef DEBUG
-    id informationOverlay = NSClassFromString(@"UIDebuggingInformationOverlay");
+        id informationOverlay = NSClassFromString(@"UIDebuggingInformationOverlay");
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
-    [informationOverlay performSelector:@selector(prepareDebuggingOverlay)];
-    [[informationOverlay performSelector:@selector(overlay)] performSelector:@selector(toggleVisibility)];
+        [informationOverlay performSelector:@selector(prepareDebuggingOverlay)];
+        [[informationOverlay performSelector:@selector(overlay)] performSelector:@selector(toggleVisibility)];
 #pragma clang diagnostic pop
 #endif
+    }];
+    [alert addAction:overlayAction];
+    
+    UIAlertAction* archiveAction = [UIAlertAction actionWithTitle:@"url归档" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        [[CYUrlAnalyseManager defaultManager] writeUrlDataToPlistWithfinishBlock:^(BOOL success) {
+           
+            @strongify(self);
+            
+            NSString* title = success ? @"url归档成功" : @"url归档失败";
+            
+            UIAlertController* doneController = [UIAlertController alertControllerWithTitle:title message:nil preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction* doneAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:Nil];
+            [doneController addAction:doneAction];
+            [self presentViewController:doneController animated:YES completion:Nil];
+        }];
+    }];
+    [alert addAction:archiveAction];
+    
+    UIAlertAction* cleanAction = [UIAlertAction actionWithTitle:@"清除列表" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+       
+        [[CYUrlAnalyseManager defaultManager] cleanAllObejct];
+    }];
+    [alert addAction:cleanAction];
+    
+    UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+        
+    }];
+    [alert addAction:cancelAction];
+    
+    [self presentViewController:alert animated:YES completion:Nil];
 }
 
 - (void)closeCurrentView:(id)sender
@@ -110,7 +149,11 @@
 
 - (void)urlAnalyseChanged:(NSNotification*)note
 {
-    [_tableView reloadData];
+    dispatch_async(dispatch_get_main_queue(), ^{
+    
+        [_tableView reloadData];
+    });
+    
 }
 
 @end
