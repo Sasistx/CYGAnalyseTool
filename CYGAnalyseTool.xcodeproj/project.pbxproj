@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F30893BC1F99CDE200BC9316 /* CYUrlSessionConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = F30893BB1F99CDE200BC9316 /* CYUrlSessionConfiguration.m */; };
 		F30C239D1F306067007DD4F2 /* CYUrlAnalyseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F30C239C1F306067007DD4F2 /* CYUrlAnalyseModel.m */; };
 		F326E3161F189E10003E9D01 /* CYGToolListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F326E3151F189E10003E9D01 /* CYGToolListViewController.m */; };
 		F326E3191F1CA1DA003E9D01 /* CYUrlAnalyseDemux.m in Sources */ = {isa = PBXBuildFile; fileRef = F326E3181F1CA1DA003E9D01 /* CYUrlAnalyseDemux.m */; };
@@ -46,6 +47,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F30893BA1F99CDE200BC9316 /* CYUrlSessionConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYUrlSessionConfiguration.h; sourceTree = "<group>"; };
+		F30893BB1F99CDE200BC9316 /* CYUrlSessionConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYUrlSessionConfiguration.m; sourceTree = "<group>"; };
 		F30C239B1F306067007DD4F2 /* CYUrlAnalyseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYUrlAnalyseModel.h; sourceTree = "<group>"; };
 		F30C239C1F306067007DD4F2 /* CYUrlAnalyseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYUrlAnalyseModel.m; sourceTree = "<group>"; };
 		F326E3141F189E10003E9D01 /* CYGToolListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYGToolListViewController.h; sourceTree = "<group>"; };
@@ -211,6 +214,8 @@
 				F30C239C1F306067007DD4F2 /* CYUrlAnalyseModel.m */,
 				F3A01B4A1F4EBFEF004DAC31 /* CYUrlArchiveManager.h */,
 				F3A01B4B1F4EBFEF004DAC31 /* CYUrlArchiveManager.m */,
+				F30893BA1F99CDE200BC9316 /* CYUrlSessionConfiguration.h */,
+				F30893BB1F99CDE200BC9316 /* CYUrlSessionConfiguration.m */,
 			);
 			path = UrlAnalyse;
 			sourceTree = "<group>";
@@ -346,6 +351,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F37EBF641D81ACF7001CEED1 /* ViewController.m in Sources */,
+				F30893BC1F99CDE200BC9316 /* CYUrlSessionConfiguration.m in Sources */,
 				F37EBF9B1D81ADAE001CEED1 /* CYUrlAnalyseListCell.m in Sources */,
 				F37EBF9F1D81ADAE001CEED1 /* CYUrlAnalyzeDetailViewController.m in Sources */,
 				F37EBF9C1D81ADAE001CEED1 /* CYUrlAnalyseListViewController.m in Sources */,

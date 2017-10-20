@@ -12,6 +12,7 @@
 #import "CYGToolDefines.h"
 #import "CYUrlArchiveManager.h"
 #import <CoreMotion/CoreMotion.h>
+#import "CYUrlSessionConfiguration.h"
 
 NSString* const CYUrlAnalyseChangeKey = @"CYUrlAnalyseChangeKey";
 NSString* const CYURLProtocolHandledKey = @"CYURLProtocolHandledKey";
@@ -103,7 +104,7 @@ static CYUrlAnalyseManager* defaultManager = nil;
     
     _cmManager = motionManager;
     
-    [NSURLProtocol registerClass:[CYUrlAnalyseProtocol class]];
+    [[CYUrlSessionConfiguration sharedConfiguration] startSwizzing];
 }
 
 - (void)logoutAnalyse
@@ -112,9 +113,8 @@ static CYUrlAnalyseManager* defaultManager = nil;
         
         [_cmManager stopAccelerometerUpdates];
         _cmManager = nil;
-        
-        [NSURLProtocol unregisterClass:[CYUrlAnalyseProtocol class]];
     }
+    [[CYUrlSessionConfiguration sharedConfiguration] stopSwizzing];
 }
 
 - (void)showAnalyseView {
