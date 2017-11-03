@@ -52,7 +52,7 @@
     _data = [NSMutableData data];
     NSMutableURLRequest *mutableReqeust = [[self request] mutableCopy];
     [[self class] setProperty:@YES forKey:CYURLProtocolHandledKey inRequest:mutableReqeust];
-    
+    _urlModel.requestPath = mutableReqeust.URL.path;
     self.task = [[[self class] sharedDemux] dataTaskWithRequest:mutableReqeust delegate:self];
     [self.task resume];
 }

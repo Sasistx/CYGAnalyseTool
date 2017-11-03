@@ -107,6 +107,11 @@ NSString* const CYUrlModelRespPath = @"Resp_path";
 
 + (NSString *)pathFilter:(NSString *)path {
     
+    if (path == nil || [path isEqualToString:@""]) {
+        
+        return nil;
+    }
+    
     NSString* result = nil;
     
     if ([CYUrlAnalyseManager defaultManager].pathFilters) {

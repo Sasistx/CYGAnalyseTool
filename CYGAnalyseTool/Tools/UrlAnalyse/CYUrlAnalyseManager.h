@@ -26,7 +26,7 @@ typedef NS_ENUM(NSInteger, CYUrlStorageType) {
 @property (nonatomic, strong, readonly) NSMutableArray <CYUrlAnalyseModel *>* urlArray;
 
 //@[@{CYURLDBRegexKey:@"regex", @"CYURLDBValueKey":@"/path/"}]
-@property (nonatomic, strong) NSMutableArray* pathFilters;
+@property (nonatomic, strong) NSArray* pathFilters;
 
 @property (nonatomic, getter=isEnableUrlAnalyse) BOOL enableUrlAnalyse; //default is YES
 @property (nonatomic, getter=isEnableOverlay) BOOL enableOverlay; //default is YES
