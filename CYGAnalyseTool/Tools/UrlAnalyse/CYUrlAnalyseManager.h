@@ -12,15 +12,28 @@
 
 extern NSString* const CYUrlAnalyseChangeKey;
 extern NSString* const CYURLProtocolHandledKey;
+extern NSString* const CYURLDBRegexKey;
+extern NSString* const CYURLDBValueKey;
+
+typedef NS_ENUM(NSInteger, CYUrlStorageType) {
+    
+    CYUrlStorageTypeManual,
+    CYUrlStorageTypeAutoDB,
+};
 
 @interface CYUrlAnalyseManager : NSObject
 
 @property (nonatomic, strong, readonly) NSMutableArray <CYUrlAnalyseModel *>* urlArray;
 
+//@[@{CYURLDBRegexKey:@"regex", @"CYURLDBValueKey":@"/path/"}]
+@property (nonatomic, strong) NSMutableArray* pathFilters;
+
 @property (nonatomic, getter=isEnableUrlAnalyse) BOOL enableUrlAnalyse; //default is YES
 @property (nonatomic, getter=isEnableOverlay) BOOL enableOverlay; //default is YES
 
 @property (nonatomic, strong) CYNetworkFlow* networkFlow;
+
+@property (nonatomic) CYUrlStorageType storageType;
 
 + (CYUrlAnalyseManager *)defaultManager;
 
@@ -41,5 +54,7 @@ extern NSString* const CYURLProtocolHandledKey;
 - (void)logoutAnalyse;
 
 - (void)writeUrlDataToPlistWithfinishBlock:(void (^)(BOOL success))finishBlock;
+
+- (void)writeDataToDB;
 
 @end

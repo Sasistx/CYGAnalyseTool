@@ -77,21 +77,33 @@
     }];
     [alert addAction:overlayAction];
     
-    UIAlertAction* archiveAction = [UIAlertAction actionWithTitle:@"url归档" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    if ([CYUrlAnalyseManager defaultManager].storageType == CYUrlStorageTypeAutoDB) {
         
-        [[CYUrlAnalyseManager defaultManager] writeUrlDataToPlistWithfinishBlock:^(BOOL success) {
-           
-            @strongify(self);
+        
+    } else {
+        
+        UIAlertAction* plistAction = [UIAlertAction actionWithTitle:@"url plist 归档" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             
-            NSString* title = success ? @"url归档成功" : @"url归档失败";
-            
-            UIAlertController* doneController = [UIAlertController alertControllerWithTitle:title message:nil preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction* doneAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:Nil];
-            [doneController addAction:doneAction];
-            [self presentViewController:doneController animated:YES completion:Nil];
+            [[CYUrlAnalyseManager defaultManager] writeUrlDataToPlistWithfinishBlock:^(BOOL success) {
+                
+                @strongify(self);
+                
+                NSString* title = success ? @"归档成功" : @"url归档失败";
+                
+                UIAlertController* doneController = [UIAlertController alertControllerWithTitle:title message:nil preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction* doneAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:Nil];
+                [doneController addAction:doneAction];
+                [self presentViewController:doneController animated:YES completion:Nil];
+            }];
         }];
-    }];
-    [alert addAction:archiveAction];
+        [alert addAction:plistAction];
+        
+        UIAlertAction* dbAction = [UIAlertAction actionWithTitle:@"url db 归档" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+            [[CYUrlAnalyseManager defaultManager] writeDataToDB];
+        }];
+        [alert addAction:dbAction];
+    }
     
     UIAlertAction* cleanAction = [UIAlertAction actionWithTitle:@"清除列表" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
        
@@ -153,7 +165,6 @@
     
         [_tableView reloadData];
     });
-    
 }
 
 @end

@@ -13,4 +13,6 @@
 
 - (void)archivePlistWithDataArray:(NSArray <CYUrlAnalyseModel *> *)array finishBlock:(void (^)(BOOL success))finishBlock;
 
+- (void)archivePlistWithDB:(NSArray <CYUrlAnalyseModel *> *)array;
+
 @end

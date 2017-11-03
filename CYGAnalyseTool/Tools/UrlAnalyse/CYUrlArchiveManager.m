@@ -7,6 +7,7 @@
 //
 
 #import "CYUrlArchiveManager.h"
+#import "CYUrlDBManager.h"
 
 @interface CYUrlArchiveManager ()
 @property (nonatomic) BOOL isWriting;
@@ -58,6 +59,11 @@
             }
         });
     });
+}
+
+- (void)archivePlistWithDB:(NSArray <CYUrlAnalyseModel *> *)array {
+    
+    [[CYUrlDBManager sharedManager] insertOrUpdateDataListToDB:array];
 }
 
 @end

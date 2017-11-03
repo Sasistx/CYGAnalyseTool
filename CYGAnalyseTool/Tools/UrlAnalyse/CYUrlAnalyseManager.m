@@ -16,6 +16,8 @@
 
 NSString* const CYUrlAnalyseChangeKey = @"CYUrlAnalyseChangeKey";
 NSString* const CYURLProtocolHandledKey = @"CYURLProtocolHandledKey";
+NSString* const CYURLDBRegexKey = @"CYURLDBRegexKey";
+NSString* const CYURLDBValueKey = @"CYURLDBValueKey";
 
 @interface CYUrlAnalyseManager ()
 @property (nonatomic, strong) CMMotionManager *cmManager;
@@ -134,6 +136,11 @@ static CYUrlAnalyseManager* defaultManager = nil;
 - (void)writeUrlDataToPlistWithfinishBlock:(void (^)(BOOL success))finishBlock {
 
     [_archiveManager archivePlistWithDataArray:_urlArray finishBlock:finishBlock];
+}
+
+- (void)writeDataToDB {
+    
+    [_archiveManager archivePlistWithDB:_urlArray];
 }
 
 @end

@@ -7,10 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A2BD06012BFD19D8B4E65C3 /* libPods-CYGAnalyseToolUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5223D3AABC355F73DEA8E99A /* libPods-CYGAnalyseToolUITests.a */; };
+		7A4CD15661B33199932A60E7 /* libPods-CYGAnalyseTool.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 452BCBEA24E9552EE38281F9 /* libPods-CYGAnalyseTool.a */; };
+		ADBD72EBCA566C5BE9EE807E /* libPods-CYGAnalyseToolTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 01369F729377F7ACC15578C0 /* libPods-CYGAnalyseToolTests.a */; };
 		F30893BC1F99CDE200BC9316 /* CYUrlSessionConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = F30893BB1F99CDE200BC9316 /* CYUrlSessionConfiguration.m */; };
 		F30C239D1F306067007DD4F2 /* CYUrlAnalyseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F30C239C1F306067007DD4F2 /* CYUrlAnalyseModel.m */; };
 		F326E3161F189E10003E9D01 /* CYGToolListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F326E3151F189E10003E9D01 /* CYGToolListViewController.m */; };
 		F326E3191F1CA1DA003E9D01 /* CYUrlAnalyseDemux.m in Sources */ = {isa = PBXBuildFile; fileRef = F326E3181F1CA1DA003E9D01 /* CYUrlAnalyseDemux.m */; };
+		F3302F0C1FAAF7E7001AD474 /* CYUrlDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F3302F0B1FAAF7E7001AD474 /* CYUrlDBManager.m */; };
 		F35990681F25DACC00FC07F5 /* CYUrlBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F35990671F25DACC00FC07F5 /* CYUrlBaseViewController.m */; };
 		F359906B1F25DF3300FC07F5 /* CYUrlContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F359906A1F25DF3300FC07F5 /* CYUrlContentViewController.m */; };
 		F37EBF5E1D81ACF7001CEED1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F37EBF5D1D81ACF7001CEED1 /* main.m */; };
@@ -47,6 +51,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		01369F729377F7ACC15578C0 /* libPods-CYGAnalyseToolTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CYGAnalyseToolTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		05A51995E2F5BB25FD192F83 /* Pods-CYGAnalyseTool.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CYGAnalyseTool.release.xcconfig"; path = "Pods/Target Support Files/Pods-CYGAnalyseTool/Pods-CYGAnalyseTool.release.xcconfig"; sourceTree = "<group>"; };
+		24869ECDA0929F7DD7B5E49E /* Pods-CYGAnalyseTool.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CYGAnalyseTool.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CYGAnalyseTool/Pods-CYGAnalyseTool.debug.xcconfig"; sourceTree = "<group>"; };
+		34588E5DD5A7E499B4B3F22D /* Pods-CYGAnalyseToolUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CYGAnalyseToolUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CYGAnalyseToolUITests/Pods-CYGAnalyseToolUITests.release.xcconfig"; sourceTree = "<group>"; };
+		452BCBEA24E9552EE38281F9 /* libPods-CYGAnalyseTool.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CYGAnalyseTool.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5223D3AABC355F73DEA8E99A /* libPods-CYGAnalyseToolUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CYGAnalyseToolUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		54581E27DAD8EBE14D140707 /* Pods-CYGAnalyseToolTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CYGAnalyseToolTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CYGAnalyseToolTests/Pods-CYGAnalyseToolTests.debug.xcconfig"; sourceTree = "<group>"; };
+		62439FB5288C17CFAC1601AF /* Pods-CYGAnalyseToolTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CYGAnalyseToolTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CYGAnalyseToolTests/Pods-CYGAnalyseToolTests.release.xcconfig"; sourceTree = "<group>"; };
+		8F8DB432A70CEF6006E060F0 /* Pods-CYGAnalyseToolUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CYGAnalyseToolUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CYGAnalyseToolUITests/Pods-CYGAnalyseToolUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F30893BA1F99CDE200BC9316 /* CYUrlSessionConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYUrlSessionConfiguration.h; sourceTree = "<group>"; };
 		F30893BB1F99CDE200BC9316 /* CYUrlSessionConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYUrlSessionConfiguration.m; sourceTree = "<group>"; };
 		F30C239B1F306067007DD4F2 /* CYUrlAnalyseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYUrlAnalyseModel.h; sourceTree = "<group>"; };
@@ -55,6 +68,8 @@
 		F326E3151F189E10003E9D01 /* CYGToolListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYGToolListViewController.m; sourceTree = "<group>"; };
 		F326E3171F1CA1DA003E9D01 /* CYUrlAnalyseDemux.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYUrlAnalyseDemux.h; sourceTree = "<group>"; };
 		F326E3181F1CA1DA003E9D01 /* CYUrlAnalyseDemux.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYUrlAnalyseDemux.m; sourceTree = "<group>"; };
+		F3302F0A1FAAF7E7001AD474 /* CYUrlDBManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYUrlDBManager.h; sourceTree = "<group>"; };
+		F3302F0B1FAAF7E7001AD474 /* CYUrlDBManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYUrlDBManager.m; sourceTree = "<group>"; };
 		F35990661F25DACC00FC07F5 /* CYUrlBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYUrlBaseViewController.h; sourceTree = "<group>"; };
 		F35990671F25DACC00FC07F5 /* CYUrlBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYUrlBaseViewController.m; sourceTree = "<group>"; };
 		F35990691F25DF3300FC07F5 /* CYUrlContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYUrlContentViewController.h; sourceTree = "<group>"; };
@@ -96,6 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A4CD15661B33199932A60E7 /* libPods-CYGAnalyseTool.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADBD72EBCA566C5BE9EE807E /* libPods-CYGAnalyseToolTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,12 +127,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A2BD06012BFD19D8B4E65C3 /* libPods-CYGAnalyseToolUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		79A6F8AB20335DFC9C44482D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				452BCBEA24E9552EE38281F9 /* libPods-CYGAnalyseTool.a */,
+				01369F729377F7ACC15578C0 /* libPods-CYGAnalyseToolTests.a */,
+				5223D3AABC355F73DEA8E99A /* libPods-CYGAnalyseToolUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		879BC0BD717623B7C496FAF1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				24869ECDA0929F7DD7B5E49E /* Pods-CYGAnalyseTool.debug.xcconfig */,
+				05A51995E2F5BB25FD192F83 /* Pods-CYGAnalyseTool.release.xcconfig */,
+				54581E27DAD8EBE14D140707 /* Pods-CYGAnalyseToolTests.debug.xcconfig */,
+				62439FB5288C17CFAC1601AF /* Pods-CYGAnalyseToolTests.release.xcconfig */,
+				8F8DB432A70CEF6006E060F0 /* Pods-CYGAnalyseToolUITests.debug.xcconfig */,
+				34588E5DD5A7E499B4B3F22D /* Pods-CYGAnalyseToolUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		F37EBF501D81ACF7001CEED1 = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +164,8 @@
 				F37EBF751D81ACF7001CEED1 /* CYGAnalyseToolTests */,
 				F37EBF801D81ACF7001CEED1 /* CYGAnalyseToolUITests */,
 				F37EBF5A1D81ACF7001CEED1 /* Products */,
+				879BC0BD717623B7C496FAF1 /* Pods */,
+				79A6F8AB20335DFC9C44482D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -216,6 +259,8 @@
 				F3A01B4B1F4EBFEF004DAC31 /* CYUrlArchiveManager.m */,
 				F30893BA1F99CDE200BC9316 /* CYUrlSessionConfiguration.h */,
 				F30893BB1F99CDE200BC9316 /* CYUrlSessionConfiguration.m */,
+				F3302F0A1FAAF7E7001AD474 /* CYUrlDBManager.h */,
+				F3302F0B1FAAF7E7001AD474 /* CYUrlDBManager.m */,
 			);
 			path = UrlAnalyse;
 			sourceTree = "<group>";
@@ -227,9 +272,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F37EBF861D81ACF7001CEED1 /* Build configuration list for PBXNativeTarget "CYGAnalyseTool" */;
 			buildPhases = (
+				CF93504F6D3591104C4503E9 /* [CP] Check Pods Manifest.lock */,
 				F37EBF551D81ACF7001CEED1 /* Sources */,
 				F37EBF561D81ACF7001CEED1 /* Frameworks */,
 				F37EBF571D81ACF7001CEED1 /* Resources */,
+				877E0CFA8BEF4E4B2BD87F24 /* [CP] Embed Pods Frameworks */,
+				3A7A2D117BFFC83DD90F6A14 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -244,9 +292,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F37EBF891D81ACF7001CEED1 /* Build configuration list for PBXNativeTarget "CYGAnalyseToolTests" */;
 			buildPhases = (
+				C618A4503C8212B235F187E5 /* [CP] Check Pods Manifest.lock */,
 				F37EBF6E1D81ACF7001CEED1 /* Sources */,
 				F37EBF6F1D81ACF7001CEED1 /* Frameworks */,
 				F37EBF701D81ACF7001CEED1 /* Resources */,
+				2CA0D15BE0961E1A4FC7851B /* [CP] Embed Pods Frameworks */,
+				227485356FFE65F2FCCF0396 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -262,9 +313,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F37EBF8C1D81ACF7001CEED1 /* Build configuration list for PBXNativeTarget "CYGAnalyseToolUITests" */;
 			buildPhases = (
+				C7367A8F696DFCDD24DF8B8B /* [CP] Check Pods Manifest.lock */,
 				F37EBF791D81ACF7001CEED1 /* Sources */,
 				F37EBF7A1D81ACF7001CEED1 /* Frameworks */,
 				F37EBF7B1D81ACF7001CEED1 /* Resources */,
+				03E8F899F7D2D84EBEBE4DD6 /* [CP] Embed Pods Frameworks */,
+				E163BDF8A2F84FDCDDF25DDF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -345,6 +399,144 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		03E8F899F7D2D84EBEBE4DD6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CYGAnalyseToolUITests/Pods-CYGAnalyseToolUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		227485356FFE65F2FCCF0396 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CYGAnalyseToolTests/Pods-CYGAnalyseToolTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2CA0D15BE0961E1A4FC7851B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CYGAnalyseToolTests/Pods-CYGAnalyseToolTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3A7A2D117BFFC83DD90F6A14 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CYGAnalyseTool/Pods-CYGAnalyseTool-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		877E0CFA8BEF4E4B2BD87F24 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CYGAnalyseTool/Pods-CYGAnalyseTool-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C618A4503C8212B235F187E5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C7367A8F696DFCDD24DF8B8B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CF93504F6D3591104C4503E9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E163BDF8A2F84FDCDDF25DDF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CYGAnalyseToolUITests/Pods-CYGAnalyseToolUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F37EBF551D81ACF7001CEED1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -354,6 +546,7 @@
 				F30893BC1F99CDE200BC9316 /* CYUrlSessionConfiguration.m in Sources */,
 				F37EBF9B1D81ADAE001CEED1 /* CYUrlAnalyseListCell.m in Sources */,
 				F37EBF9F1D81ADAE001CEED1 /* CYUrlAnalyzeDetailViewController.m in Sources */,
+				F3302F0C1FAAF7E7001AD474 /* CYUrlDBManager.m in Sources */,
 				F37EBF9C1D81ADAE001CEED1 /* CYUrlAnalyseListViewController.m in Sources */,
 				F326E3161F189E10003E9D01 /* CYGToolListViewController.m in Sources */,
 				F3A01B4C1F4EBFEF004DAC31 /* CYUrlArchiveManager.m in Sources */,
@@ -512,6 +705,7 @@
 		};
 		F37EBF871D81ACF7001CEED1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24869ECDA0929F7DD7B5E49E /* Pods-CYGAnalyseTool.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = YRMH84M93J;
@@ -525,6 +719,7 @@
 		};
 		F37EBF881D81ACF7001CEED1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 05A51995E2F5BB25FD192F83 /* Pods-CYGAnalyseTool.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = YRMH84M93J;
@@ -538,6 +733,7 @@
 		};
 		F37EBF8A1D81ACF7001CEED1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 54581E27DAD8EBE14D140707 /* Pods-CYGAnalyseToolTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = CYGAnalyseToolTests/Info.plist;
@@ -550,6 +746,7 @@
 		};
 		F37EBF8B1D81ACF7001CEED1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 62439FB5288C17CFAC1601AF /* Pods-CYGAnalyseToolTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = CYGAnalyseToolTests/Info.plist;
@@ -562,6 +759,7 @@
 		};
 		F37EBF8D1D81ACF7001CEED1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8F8DB432A70CEF6006E060F0 /* Pods-CYGAnalyseToolUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = CYGAnalyseToolUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -573,6 +771,7 @@
 		};
 		F37EBF8E1D81ACF7001CEED1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 34588E5DD5A7E499B4B3F22D /* Pods-CYGAnalyseToolUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = CYGAnalyseToolUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

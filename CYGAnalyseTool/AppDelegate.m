@@ -26,6 +26,7 @@
     self.window.backgroundColor = [UIColor whiteColor];
     
     [[CYUrlAnalyseManager defaultManager] registAnalyse];
+    [CYUrlAnalyseManager defaultManager].storageType = CYUrlStorageTypeAutoDB;
 //    [NSURLProtocol registerClass:[CYTestProtocol class]];
     
     ViewController* controller = [[ViewController alloc] init];
@@ -33,7 +34,6 @@
     self.window.rootViewController = navi;
     
     [self.window makeKeyAndVisible];
-    
     // Override point for customization after application launch.
     return YES;
 }

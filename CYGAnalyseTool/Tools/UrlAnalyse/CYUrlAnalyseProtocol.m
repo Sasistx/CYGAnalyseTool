@@ -10,6 +10,7 @@
 #import "CYUrlAnalyseManager.h"
 #import "CYUrlAnalyseDemux.h"
 #import "CYUrlAnalyseModel.h"
+#import "CYUrlDBManager.h"
 
 @interface CYUrlAnalyseProtocol() <NSURLSessionDataDelegate>
 @property (nonatomic, strong) NSDate* startDate;
@@ -45,9 +46,9 @@
 
 - (void)startLoading
 {
-    _startDate = [NSDate date];
     _urlModel = [[CYUrlAnalyseModel alloc] init];
     _urlModel.requestUid = [NSUUID UUID].UUIDString;
+    _urlModel.startDate = [NSDate date];
     _data = [NSMutableData data];
     NSMutableURLRequest *mutableReqeust = [[self request] mutableCopy];
     [[self class] setProperty:@YES forKey:CYURLProtocolHandledKey inRequest:mutableReqeust];
@@ -58,7 +59,7 @@
 
 - (void)stopLoading
 {
-    NSTimeInterval divTime = [[NSDate date] timeIntervalSinceDate:_startDate];
+    NSTimeInterval divTime = [[NSDate date] timeIntervalSinceDate:_urlModel.startDate];
     NSString* requestBody = [[NSString alloc] initWithData:self.request.HTTPBody encoding:NSUTF8StringEncoding];
     
     _urlModel.responseTime = divTime;
@@ -67,12 +68,19 @@
     _urlModel.requestHeaderFields = self.request.allHTTPHeaderFields;
     _urlModel.requestBodyLength = self.request.HTTPBody.length / 1024.0;
     _urlModel.httpMethod = self.request.HTTPMethod;
+    _urlModel.endDate = [NSDate date];
     if (_urlModel.requestHeaderFields) {
         NSData* data = [NSJSONSerialization dataWithJSONObject:_urlModel.requestHeaderFields options:NSJSONWritingPrettyPrinted error:nil];
         _urlModel.requestHeaderLength = data.length / 1024.0;
     }
     
     [[CYUrlAnalyseManager defaultManager] addObjectToUrlArray:_urlModel];
+    
+    if ([CYUrlAnalyseManager defaultManager].storageType == CYUrlStorageTypeAutoDB) {
+        
+        [[CYUrlDBManager sharedManager] insertOrUpdateDataToDB:_urlModel];
+    }
+    
     if (self.task != nil) {
         
         [self.task cancel];

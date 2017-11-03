@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "CYGAnalyseTool"
-  s.version      = "1.1.6"
+  s.version      = "1.1.7"
   s.summary      = "一些调试用工具"
   s.description  = "Url请求结果展示工具&UIDebuggingInformationOverlay"
 
@@ -12,6 +12,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/Sasistx/CYGAnalyseTool.git", :tag => s.version }
   s.source_files  = "CYGAnalyseTool/Tools/**/*.{h,m}"
   s.exclude_files = "Classes/Exclude"
+  s.dependency 'FMDB', '~> 2.7.2'
   s.weak_framework = 'CoreMotion'
 
 end
