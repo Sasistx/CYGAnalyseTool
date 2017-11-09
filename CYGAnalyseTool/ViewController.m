@@ -10,6 +10,7 @@
 #import "CYUrlAnalyseProtocol.h"
 #import "CYUrlAnalyseManager.h"
 #import "CYUrlAnalyseListViewController.h"
+#import "CYUrlDBManager.h"
 
 @interface ViewController () <NSURLSessionDelegate, UIWebViewDelegate>
 
@@ -25,7 +26,7 @@
     NSURLRequest* request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.apple.com/cn/"]];
     [webView loadRequest:request];
     
-    UIBarButtonItem* leftItem = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(closeAnalyse:)];
+    UIBarButtonItem* leftItem = [[UIBarButtonItem alloc] initWithTitle:@"dbData" style:UIBarButtonItemStylePlain target:self action:@selector(dbData:)];
     self.navigationItem.rightBarButtonItem = leftItem;
     
     UIBarButtonItem* rightItem = [[UIBarButtonItem alloc] initWithTitle:@"network" style:UIBarButtonItemStylePlain target:self action:@selector(openAnalyse:)];
@@ -36,16 +37,14 @@
        
         
     }];
-//    NSURLSessionConfiguration* config = [NSURLSessionConfiguration defaultSessionConfiguration];
-//    config.protocolClasses = @[self];
-//    NSURLSession* session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue:[NSOperationQueue mainQueue]];
-//    NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request];
-//    [task resume];
 }
 
-- (void)closeAnalyse:(id)sender {
-
-    [[CYUrlAnalyseManager defaultManager] logoutAnalyse];
+- (void)dbData:(id)sender {
+    
+    [[CYUrlDBManager sharedManager] getDictListByRowId:@"1" limit:50 isAsc:YES customDBKeys:nil callBack:^(NSArray<NSDictionary *> *dataList) {
+        
+        //[self sendToRemoteService:dataList];
+    }];
 }
 
 - (void)openAnalyse:(id)sender {

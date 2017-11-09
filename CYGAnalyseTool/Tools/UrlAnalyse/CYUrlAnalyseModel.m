@@ -81,8 +81,7 @@ NSString* const CYUrlModelRespPath = @"Resp_path";
     return modelDict;
 }
 
-+ (NSString*)convertToJSONData:(id)infoDict
-{
++ (NSString*)convertToJSONData:(id)infoDict {
     NSError *error;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:infoDict
                                                        options:NSJSONWritingPrettyPrinted
@@ -103,6 +102,50 @@ NSString* const CYUrlModelRespPath = @"Resp_path";
     [jsonString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
     
     return jsonString;
+}
+
++ (NSDictionary *)convertToDictionary:(NSString *)jsonString {
+    
+    if (!jsonString) {
+        
+        return @{};
+    }
+    
+    NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *err;
+    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                        options:NSJSONReadingMutableContainers
+                                                          error:&err];
+    if (err) {
+        
+        return @{};
+    }
+    return dict;
+}
+
++ (NSDate *)convertToDate:(NSString *)dateString {
+    
+    if (dateString) {
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss zzz"];
+        return [dateFormatter dateFromString:dateString];
+    } else {
+        return nil;
+    }
+}
+
++ (double)convertToDouble:(NSString *)length {
+    
+    if (length && length.length > 0) {
+        
+        NSString* temp = [length stringByReplacingOccurrencesOfString:@"kb" withString:@""];
+        
+        return [[temp stringByReplacingOccurrencesOfString:@"s" withString:@""] doubleValue];
+    } else {
+        
+        return 0;
+    }
 }
 
 + (NSString *)pathFilter:(NSString *)path {

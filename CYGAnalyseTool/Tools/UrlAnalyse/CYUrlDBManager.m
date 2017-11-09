@@ -15,6 +15,7 @@ static NSString* kCYGUrlTableName = @"Url";
 
 @interface CYUrlDBManager ()
 @property (nonatomic, strong) FMDatabaseQueue *dbQueue;
+@property (nonatomic, strong) NSArray* customKeys;
 @end
 
 @implementation CYUrlDBManager
@@ -165,5 +166,134 @@ static NSString* kCYGUrlTableName = @"Url";
     }];
 }
 
+- (void)getModelListByRowId:(NSString *)rowId limit:(NSInteger)limit isAsc:(BOOL)isAsc callBack:(ListModelCallBack)callBack {
+    
+    if (!rowId || [rowId isEqualToString:@""]) {
+        
+        rowId = @"1";
+    }
+    
+    if (limit <= 0 || limit > 50) {
+        
+        limit = 50;
+    }
+    
+    NSString* sequence = isAsc ? @"asc" : @"desc";
+    
+    NSString* sqlStr = [NSString stringWithFormat:@"select * from %@ where rowid>=? order by rowid %@ limit %zi ", kCYGUrlTableName, sequence, limit];
+    
+    [_dbQueue inDatabase:^(FMDatabase *db) {
+        FMResultSet* rs = [db executeQuery:sqlStr withArgumentsInArray:@[rowId]];
+        NSArray* dataList = [self getDataModelListByResulteSet:rs];
+        if (callBack) {
+            callBack(dataList);
+        }
+    }];
+}
+
+- (CYUrlAnalyseModel *)getModelByResulteSet:(FMResultSet* )rs {
+    
+    CYUrlAnalyseModel * model = [[CYUrlAnalyseModel alloc] init];
+    model.statusCode = [rs intForColumn:CYUrlModelStatusCode];
+    model.requestUid = [rs stringForColumn:CYUrlModelReqUid];
+    model.mimeType = [rs stringForColumn:CYUrlModelMimeType];
+    model.errorInfo = [CYUrlAnalyseModel convertToDictionary:[rs stringForColumn:CYUrlModelErrorInfo]];
+    model.httpMethod = [rs stringForColumn:CYUrlModelHttpMethod];
+    model.requestUrl = [rs stringForColumn:CYUrlModelReqUrl];
+    model.requestPath = [rs stringForColumn:CYUrlModelReqPath];
+    model.requestBody = [rs stringForColumn:CYUrlModelReqBody];
+    model.requestHeaderFields = [CYUrlAnalyseModel convertToDictionary:[rs stringForColumn:CYUrlModelReqHeaderFields]];
+    model.requestHeaderLength = [CYUrlAnalyseModel convertToDouble:[rs stringForColumn:CYUrlModelReqHeaderLength]];
+    model.requestBodyLength = [CYUrlAnalyseModel convertToDouble:[rs stringForColumn:CYUrlModelReqBodyLength]];
+    model.responseUrl = [rs stringForColumn:CYUrlModelResponseUrl];
+    model.responsePath = @"";
+    model.responseBody = [rs stringForColumn:CYUrlModelResponseBody];
+    model.responseContent = [rs stringForColumn:CYUrlModelResponseContent];
+    model.responseTime = [CYUrlAnalyseModel convertToDouble:[rs stringForColumn:CYUrlModelResponseTime]];
+    model.responseHeaderFields = [CYUrlAnalyseModel convertToDictionary:[rs stringForColumn:CYUrlModelRespHeaderFields]];
+    model.responseHeaderLength = [CYUrlAnalyseModel convertToDouble:[rs stringForColumn:CYUrlModelRespHeaderLength]];
+    model.responseBodyLength = [CYUrlAnalyseModel convertToDouble:[rs stringForColumn:CYUrlModelRespBodyLength]];
+    model.startDate = [CYUrlAnalyseModel convertToDate:[rs stringForColumn:CYUrlModelStartDate]];
+    model.endDate = [CYUrlAnalyseModel convertToDate:[rs stringForColumn:CYUrlModelEndDate]];
+    
+    return model;
+}
+
+- (NSArray <CYUrlAnalyseModel *> *)getDataModelListByResulteSet:(FMResultSet* )rs {
+    
+    NSMutableArray *result = [NSMutableArray array];
+    while ([rs next]) {
+        CYUrlAnalyseModel * model = [self getModelByResulteSet:rs];
+        [result addObject:model];
+    }
+    [rs close];
+    return result;
+}
+
+- (void)getDictListByRowId:(NSString *)rowId limit:(NSInteger)limit isAsc:(BOOL)isAsc customDBKeys:(NSArray <NSString *> *)keys callBack:(ListDictCallBack)callBack {
+    
+    self.customKeys = keys;
+    
+    if (!rowId || [rowId isEqualToString:@""]) {
+        
+        rowId = @"1";
+    }
+    
+    if (limit <= 0 || limit > 50) {
+        
+        limit = 50;
+    }
+    
+    NSString* sequence = isAsc ? @"asc" : @"desc";
+    
+    NSString* sqlStr = [NSString stringWithFormat:@"select * from %@ where rowid>=? order by rowid %@ limit %zi ", kCYGUrlTableName, sequence, limit];
+    [_dbQueue inDatabase:^(FMDatabase *db) {
+        FMResultSet* rs = [db executeQuery:sqlStr withArgumentsInArray:@[rowId]];
+        NSArray* dataList = [self getDataDictListByResulteSet:rs];
+        if (callBack) {
+            callBack(dataList);
+        }
+    }];
+    
+}
+
+- (NSArray <NSDictionary *> *)getDataDictListByResulteSet:(FMResultSet* )rs {
+    
+    NSMutableArray *result = [NSMutableArray array];
+    while ([rs next]) {
+        NSDictionary * dict = [self getDictByResulteSet:rs];
+        [result addObject:dict];
+    }
+    [rs close];
+    return result;
+}
+
+- (NSDictionary *)getDictByResulteSet:(FMResultSet* )rs {
+    
+    NSMutableDictionary* dict = [NSMutableDictionary dictionary];
+    NSArray* keys = (_customKeys && _customKeys.count > 0) ? _customKeys : [self dbKeys];
+    for (NSString* key in keys) {
+        NSString* value = [rs stringForColumn:key];
+        dict[key] = value ? value : @"";
+    }
+    return dict;
+}
+
+- (void)getLatestRowId:(ListRowIdCallBack)callBack {
+    
+    NSString* sqlStr = [NSString stringWithFormat:@"select rowid, * from %@ order by rowid desc limit 1", kCYGUrlTableName];
+    [_dbQueue inDatabase:^(FMDatabase *db) {
+        FMResultSet* rs = [db executeQuery:sqlStr];
+        NSString* rowId = @"";
+        while ([rs next]) {
+            rowId = [rs stringForColumn:@"rowid"];
+            break;
+        }
+        if (callBack) {
+            callBack(rowId);
+        }
+        [rs close];
+    }];
+}
 
 @end

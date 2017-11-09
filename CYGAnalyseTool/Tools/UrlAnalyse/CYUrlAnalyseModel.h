@@ -57,5 +57,8 @@ extern NSString* const CYUrlModelRespPath;
 @property (nonatomic, copy) NSDate* endDate;
 
 - (NSDictionary *)transformToDictionary;
++ (NSDictionary *)convertToDictionary:(NSString *)jsonString;
++ (NSDate *)convertToDate:(NSString *)dateString;
++ (double)convertToDouble:(NSString *)length;
 
 @end
