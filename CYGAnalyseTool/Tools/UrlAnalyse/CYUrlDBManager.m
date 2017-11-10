@@ -289,10 +289,10 @@ static NSString* kCYGUrlTableName = @"Url";
             rowId = [rs stringForColumn:@"rowid"];
             break;
         }
+        [rs close];
         if (callBack) {
             callBack(rowId);
         }
-        [rs close];
     }];
 }
 
