@@ -11,8 +11,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, "8.0"
   s.source       = { :git => "https://github.com/Sasistx/CYGAnalyseTool.git", :tag => s.version }
   s.source_files  = "CYGAnalyseTool/Tools/**/*.{h,m}"
-  s.exclude_files = "Classes/Exclude"
-  s.dependency 'FMDB', '~> 2.7.2'
-  s.weak_framework = 'CoreMotion'
+  s.dependency 'FMDB', '~> 2.7'
+  s.framework = 'CoreMotion'
 
 end
